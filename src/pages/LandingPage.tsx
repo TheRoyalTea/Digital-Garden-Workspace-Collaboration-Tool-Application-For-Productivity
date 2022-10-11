@@ -2,18 +2,15 @@ import GitHubLogo from "../assets/github-logo.png";
 
 type Props = {
   setIsLoggedIn: (isLoggedIn: boolean) => void;
+  setLoginRequest: (loginRequest: boolean) => void;
+  setRegisterRequest: (registerRequest: boolean) => void;
 };
 
-const LandingPage = ({ setIsLoggedIn }: Props) => {
+const LandingPage = ({ setIsLoggedIn, setLoginRequest, setRegisterRequest }: Props) => {
   return (
     <div className="bg-dark-jet h-screen w-full">
-      <button
-        className="button-blue absolute right-24 top-6 "
-        onClick={() => setIsLoggedIn(true)}
-      >
-        Login
-      </button>
-      <button className="absolute text-cream underline underline-offset-4 top-8 right-5">Sign Up</button>
+      <button className="button-blue absolute right-24 top-6" onClick={() => setLoginRequest(true)}>Login</button>
+      <button className="absolute text-cream underline underline-offset-4 top-8 right-5" onClick={() => setRegisterRequest(true)}>Sign Up</button>
       <div className="bg-[#171313] flex flex-col items-center h-screen w-4/12">
         <h1 className="text-cream font-bold text-4xl tracking-[0.13em] leading-normal mt-32">
           <span className="text-blue">d</span>igital&nbsp;
