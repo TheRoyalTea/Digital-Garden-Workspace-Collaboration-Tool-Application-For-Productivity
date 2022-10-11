@@ -7,10 +7,12 @@ module.exports = {
   theme: {
     colors: {
       "jet": "#343030",
+      "dark-jet": "#262222",
       "cream": "#FFD6C0",
       "blue": "#4DA1A9",
-      "red": "#AD5D4E",
+      "red": "#9F6358",
       "green": "#6A8E7F",
+      "pink": "#CDB0CA",
     }
   },
   plugins: [],

@@ -1,18 +1,14 @@
-import Canvas from "./components/Canvas";
-import Menubar from "./components/Menubar";
-import Toolbar from "./components/Toolbar";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import { useState } from "react";
+import Board from "./pages/Board";
+import LandingPage from "./pages/LandingPage";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
   return (
-    <div className="App">
-      <Menubar />
-      <DndProvider backend={HTML5Backend}>
-        <Toolbar />
-        <Canvas />
-      </DndProvider>
-    </div>
+    <>
+      {isLoggedIn ? <Board /> : <LandingPage setIsLoggedIn={setIsLoggedIn}/>}
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ export const Menubar = () => {
           {"{ option }"}
         </div>
         <div className="flex justify-center items-center ml-[58%]">
-          <button className="h-12 w-20 bg-blue rounded-xl text-cream">
+          <button className="button-blue">
             Share
           </button>
         </div>
