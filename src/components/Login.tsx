@@ -22,12 +22,12 @@ const Login = ({
           <p className="text-7xl text-cream">Login</p>
           <form>
             <input
-              className="bg-dark-jet rounded-xl border h-12 w-80 mb-[20%] text-center"
+              className="form-field mb-[20%]"
               placeholder="Username"
             ></input>
             <br />
             <input
-              className="bg-dark-jet rounded-xl border h-12 w-80 text-center"
+              className="form-field"
               placeholder="Password"
             ></input>
           </form>

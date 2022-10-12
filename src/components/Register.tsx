@@ -16,17 +16,17 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
           <p className="text-7xl text-cream">Register</p>
           <form>
             <input
-              className="bg-dark-jet rounded-xl border h-12 w-80 mb-[10%] text-center"
+              className="form-field mb-[10%]"
               placeholder="Email"
             ></input>
             <br />
             <input
-              className="bg-dark-jet rounded-xl border h-12 w-80 mb-[10%] text-center"
+              className="form-field mb-[10%]"
               placeholder="Username"
             ></input>
             <br />
             <input
-              className="bg-dark-jet rounded-xl border h-12 w-80 text-center"
+              className="form-field"
               placeholder="Password"
             ></input>
           </form>
