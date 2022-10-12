@@ -3,13 +3,19 @@ import { useDrop } from "react-dnd";
 import cx from "classnames";
 import Item from "./Item";
 
-const Canvas = () => {
-  const [canvasItems, setCanvasItems] = useState<React.ReactNode>([]);
+// fix types
+type Props = {
+    canvasItems: any;
+    setCanvasItems: (canvasItems: any) => void;
+};
 
+const Canvas = ({canvasItems, setCanvasItems} : Props) => {
+  
   const [{ isOver }, drop] = useDrop({
     accept: "toolbarItem",
     drop: (item) => {
       setCanvasItems((canvasItems: any) => [...canvasItems, item]);
+      console.log(item);
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
