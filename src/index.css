@@ -17,4 +17,7 @@ body {
   .form-field {
     @apply bg-dark-jet rounded-xl border h-12 w-80 text-center;
   }
+  .pop-up-box {
+    @apply absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet h-2/4 w-1/4 grid place-items-center text-cream border rounded-xl;
+  }
 }

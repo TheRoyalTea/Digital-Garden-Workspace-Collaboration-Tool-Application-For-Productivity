@@ -12,23 +12,17 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
       ></button>
 
       <div>
-        <div className="absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet h-2/4 w-1/4 grid place-items-center text-cream border rounded-xl">
+        <div className="pop-up-box">
           <p className="text-7xl text-cream">Register</p>
           <form>
-            <input
-              className="form-field mb-[10%]"
-              placeholder="Email"
-            ></input>
+            <input className="form-field mb-[10%]" placeholder="Email"></input>
             <br />
             <input
               className="form-field mb-[10%]"
               placeholder="Username"
             ></input>
             <br />
-            <input
-              className="form-field"
-              placeholder="Password"
-            ></input>
+            <input className="form-field" placeholder="Password"></input>
           </form>
           <button
             className="button-blue h-12 w-40"
