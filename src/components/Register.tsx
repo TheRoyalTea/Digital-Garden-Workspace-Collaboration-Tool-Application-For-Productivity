@@ -7,7 +7,7 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
   return (
     <>
       <button
-        className="fixed bg-black bg-opacity-50 inset-0 cursor-default"
+        className="pop-up-exit-bg"
         onClick={() => setRegisterRequest(false)}
       ></button>
 

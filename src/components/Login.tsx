@@ -12,7 +12,7 @@ const Login = ({
   return (
     <>
       <button
-        className="fixed bg-black bg-opacity-50 inset-0 cursor-default"
+        className="pop-up-exit-bg"
         onClick={() => setLoginRequest(false)}
       ></button>
 
