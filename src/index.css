@@ -24,3 +24,14 @@ body {
   @apply h-24 w-24 bg-blue flex justify-center items-center text-cream border-r-2;
   }
 }
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
