@@ -26,7 +26,7 @@ const Canvas = ({canvasItems, setCanvasItems} : Props) => {
     <div
       ref={drop}
       className={cx(
-        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] absolute top-24 left-48 bg-[#242020] flex flex-row flex-wrap justify-evenly content-start",
+        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] overflow-x-auto overflow-y-auto scrollbar-hide absolute top-24 left-48 bg-[#242020] flex flex-row flex-wrap justify-evenly content-start",
         isOver && "outline-dashed outline-4 outline-green outline-offset-[-4px]"
       )}
     >
