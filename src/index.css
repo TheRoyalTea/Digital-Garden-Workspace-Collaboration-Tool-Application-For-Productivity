@@ -14,6 +14,12 @@ body {
   .button-blue {
     @apply h-10 w-20 bg-blue rounded-lg text-cream;
   }
+  .form-field {
+    @apply bg-dark-jet rounded-xl border h-12 w-80 text-center;
+  }
+  .pop-up-box {
+    @apply absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet h-2/4 w-1/4 grid place-items-center text-cream border rounded-xl;
+  }
   .menu-option {
   @apply h-24 w-24 bg-blue flex justify-center items-center text-cream border-r-2;
   }
