@@ -2,16 +2,16 @@ export const Menubar = () => {
   return (
     <div className="h-24 w-screen bg-jet border-b-4 border-cream">
       <div className="flex [&>*]:border-b-4 [&>*]:border-cream">
-        <div className="h-24 w-24 bg-blue flex justify-center items-center text-cream border-r-2">
+        <div className="menu-option">
           Add Items
         </div>
-        <div className="h-24 w-24 bg-jet flex justify-center items-center text-cream border-r-2">
+        <div className="menu-option">
           {"{ option }"}
         </div>
-        <div className="h-24 w-24 bg-jet flex justify-center items-center text-cream border-r-2">
+        <div className="menu-option">
           {"{ option }"}
         </div>
-        <div className="h-24 w-24 bg-jet flex justify-center items-center text-cream border-r-2">
+        <div className="menu-option">
           {"{ option }"}
         </div>
         <div className="flex justify-center items-center ml-[58%]">
