@@ -34,7 +34,7 @@ const Item = ({ name }: Props) => {
 
   const confirmedItem = content !== "" && (
     <div
-      className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[8px_8px_rgba(0,0,0,0.4)] flex justify-center items-center"
+      className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[8px_8px_rgba(0,0,0,0.4)] flex justify-center items-center hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[12px_12px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
       onClick={() => setIsConfirmed(false)}
     >
       {content}
