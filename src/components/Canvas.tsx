@@ -10,7 +10,7 @@ type Props = {
 };
 
 const Canvas = ({canvasItems, setCanvasItems} : Props) => {
-  
+  const [isEditing, setIsEditing] = useState(false);
   const [{ isOver }, drop] = useDrop({
     accept: "toolbarItem",
     drop: (item) => {
