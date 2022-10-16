@@ -34,7 +34,11 @@ const Item = ({ name }: Props) => {
 
   const confirmedItem = content !== "" && (
     <div
-      className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[8px_8px_rgba(0,0,0,0.4)] flex justify-center items-center hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[12px_12px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
+      className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl 
+      border border-cream border-opacity-25 
+      shadow-[8px_8px_rgba(0,0,0,0.4)] 
+      flex justify-center items-center 
+      hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[12px_12px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
       onClick={() => setIsConfirmed(false)}
     >
       {content}
@@ -42,9 +46,14 @@ const Item = ({ name }: Props) => {
   );
 
   const editingModal = (
-    <div className="h-[calc(100%-80px)] w-[calc(100%-80px)] absolute m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[24px_24px_rgba(0,0,0,0.4)] flex justify-center items-center" onKeyDown={handleKeyDown}>
+    <div className="h-[calc(100%-80px)] w-[calc(100%-80px)] absolute m-10 bg-jet text-xl text-cream rounded-xl 
+    border border-cream border-opacity-25 
+    shadow-[24px_24px_rgba(0,0,0,0.3)] 
+    flex justify-center items-center
+    hover:border-2 hover:border-opacity-75 transition hover:duration-150">
+      
       <input
-        className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
+        className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         placeholder="Enter text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
@@ -52,7 +61,7 @@ const Item = ({ name }: Props) => {
       ></input>
 
       <button
-        className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
+        className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         {...(content === "" && { disabled: true })}
         onClick={handleConfirm}
       >
@@ -60,18 +69,19 @@ const Item = ({ name }: Props) => {
       </button>
 
       <button
-        className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
+        className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         onClick={() => setContent("")}
       >
         Clear
       </button>
 
       <button
-        className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
+        className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         onClick={handleCancel}
       >
         Cancel
       </button>
+      
     </div>
   );
 

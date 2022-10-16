@@ -16,8 +16,9 @@ const DraggableToolbarItem = ({ name, canvasItems, setCanvasItems }: Props) => {
     });
 
   return (
-    <div ref={drag} className="h-24 w-48 flex justify-center items-center text-xl text-cream">
-      <span className="cursor-pointer transform duration-150 hover:scale-125" onClick={() => setCanvasItems((canvasItems: any) => [...canvasItems, {name: name}])}>
+    <div ref={drag} className="flex items-center justify-center w-48 h-24 text-xl text-cream">
+      <span className="duration-150 transform cursor-pointer hover:scale-125 underline-animation" 
+      onClick={() => setCanvasItems((canvasItems: any) => [...canvasItems, {name: name}])}>
         {name}
       </span>
     </div>
