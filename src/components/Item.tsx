@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import cx from "classnames";
 
 type Props = {
   name: string;
@@ -32,7 +33,7 @@ const Item = ({ name }: Props) => {
 
   }, [handleKeyDown])
 
-  const confirmedItem = content !== "" && (
+  const confirmedItem = savedContent !== "" && (
     <div
       className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl 
       border border-cream border-opacity-25 
@@ -41,17 +42,19 @@ const Item = ({ name }: Props) => {
       hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[12px_12px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
       onClick={() => setIsConfirmed(false)}
     >
-      {content}
+      {savedContent}
     </div>
   );
 
   const editingModal = (
-    <div className="h-[calc(100%-80px)] w-[calc(100%-80px)] absolute m-10 bg-jet text-xl text-cream rounded-xl 
-    border border-cream border-opacity-25 
-    shadow-[24px_24px_rgba(0,0,0,0.3)] 
-    flex justify-center items-center
-    hover:border-2 hover:border-opacity-75 transition hover:duration-150">
-      
+    <div className={cx("h-[calc(100%-80px)] w-[calc(100%-80px)] absolute m-10 bg-jet bg-opacity-50 text-xl text-cream rounded-xl",
+    "border border-cream border-opacity-25",
+    "shadow-[24px_24px_rgba(0,0,0,0.3)]", 
+    "flex justify-center items-center",
+    "transition duration-200",
+    "hover:border-2 hover:border-opacity-75 hover:bg-opacity-100 hover:duration-300"
+    )}>
+
       <input
         className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         placeholder="Enter text"
@@ -62,7 +65,6 @@ const Item = ({ name }: Props) => {
 
       <button
         className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
-        {...(content === "" && { disabled: true })}
         onClick={handleConfirm}
       >
         Confirm
@@ -85,7 +87,10 @@ const Item = ({ name }: Props) => {
     </div>
   );
 
-  return <>{isConfirmed ? confirmedItem : editingModal}</>;
+  return <>
+  {savedContent !== "" && confirmedItem}
+  {!isConfirmed && editingModal}  
+  </>;
 };
 
 export default Item;
