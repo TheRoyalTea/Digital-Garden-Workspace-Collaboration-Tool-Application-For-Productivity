@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Props = {
   name: string;
@@ -9,21 +9,14 @@ const Item = ({ name }: Props) => {
   const [isConfirmed, setIsConfirmed] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
 
-  useEffect(() => {
-    console.log("Item mounted");
-    return () => {
-      console.log("Item unmounted");
-    };
-  }, []);
-
   let confirmedItem = (
-    <div className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl border flex justify-center items-center">
+    <div className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[8px_8px_rgba(0,0,0,0.4)] flex justify-center items-center">
       {content}
     </div>
   );
 
   let unconfirmedItem = (
-    <div className="h-[80%] w-[80%] m-10 bg-jet text-xl text-cream rounded-xl border flex justify-center items-center">
+    <div className="h-[80%] w-[80%] absolute m-10 bg-jet text-xl text-cream rounded-xl border border-cream border-opacity-25 shadow-[24px_24px_rgba(0,0,0,0.4)] flex justify-center items-center">
       <input
         className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
         placeholder="Enter text"
@@ -32,7 +25,8 @@ const Item = ({ name }: Props) => {
       ></input>
       <button
         className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
-        onClick={() => setIsConfirmed(true)}
+        {...(content === "" && { disabled: true })}
+        onClick={() => {setIsConfirmed(true)}}
       >
         Confirm
       </button>
@@ -44,7 +38,6 @@ const Item = ({ name }: Props) => {
       </button>
 
       <button
-
         className="h-12 w-40 text-xl text-cream bg-jet rounded-xl border"
         onClick={() => setIsCancelled(true)}
       >
@@ -52,7 +45,9 @@ const Item = ({ name }: Props) => {
       </button>
     </div>
   );
-  return <>{isCancelled ? null : isConfirmed ? confirmedItem : unconfirmedItem}</>;
+  return (
+    <>{isCancelled ? null : isConfirmed ? confirmedItem : unconfirmedItem}</>
+  );
 };
 
 export default Item;
