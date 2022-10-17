@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
+import MarkdownItem from "./MarkdownItem";
+
 
 type Props = {
   name: string;
@@ -42,7 +44,7 @@ const Item = ({ name }: Props) => {
       hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[16px_16px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
       onClick={() => setIsConfirmed(false)}
     >
-      {savedContent}
+      <MarkdownItem content={content} setContent={setContent} savedContent={savedContent} setSavedContent={setSavedContent}/>
     </div>
   );
 
