@@ -7,7 +7,7 @@ module.exports = {
       "dark-jet": "#262222",
       "gruv-dark": "#1D2021",
       cream: "#FFD6C0",
-      blue: "#4DA1A9",
+      blue: "#5D7585",
       red: "#9F6358",
       green: "#6A8E7F",
       pink: "#CDB0CA",
