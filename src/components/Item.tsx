@@ -24,7 +24,7 @@ const Item = ({ name }: Props) => {
 
   const handleKeyDown = (e: any) => {
     console.log(e.key);
-    e.key === "Enter" && handleConfirm();
+    e.shiftKey && e.key === "Enter" && handleConfirm();
     e.key === "Escape" && handleCancel();
   }
 
@@ -37,10 +37,10 @@ const Item = ({ name }: Props) => {
 
   const confirmedItem = savedContent !== "" && (
     <div
-      className="h-24 w-40 m-10 bg-jet text-xl text-cream rounded-xl 
+      className="w-auto p-5 bg-jet text-xl text-cream rounded-xl 
       border border-cream border-opacity-25 
       shadow-[8px_8px_rgba(0,0,0,0.4)] 
-      flex justify-center items-center 
+      inline-block break-all whitespace-pre-line
       hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[16px_16px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
       onClick={() => setIsConfirmed(false)}
     >
@@ -56,14 +56,13 @@ const Item = ({ name }: Props) => {
     "transition duration-200",
     "hover:border-2 hover:border-opacity-75 hover:bg-opacity-100 hover:duration-300"
     )}>
-
-      <input
-        className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
+      <textarea
+        className="text-xl border text-cream bg-jet rounded-xl"
         placeholder="Enter text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         autoFocus
-      ></input>
+      ></textarea>
 
       <button
         className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
