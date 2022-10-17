@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import MarkdownItem from "./MarkdownItem";
 
-
 type Props = {
   name: string;
 };
 
 const Item = ({ name }: Props) => {
+  const [size, setSize] = useState({ width: 300, height: 300 });
   const [content, setContent] = useState("");
   const [savedContent, setSavedContent] = useState("");
   const [isConfirmed, setIsConfirmed] = useState(false);
@@ -36,16 +36,20 @@ const Item = ({ name }: Props) => {
   }, [handleKeyDown])
 
   const confirmedItem = savedContent !== "" && (
-    <div
-      className="w-auto p-5 bg-jet text-xl text-cream rounded-xl 
-      border border-cream border-opacity-25 
-      shadow-[8px_8px_rgba(0,0,0,0.4)] 
-      inline-block break-all whitespace-pre-line
-      hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:shadow-[16px_16px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
-      onClick={() => setIsConfirmed(false)}
-    >
-      <MarkdownItem content={content} setContent={setContent} savedContent={savedContent} setSavedContent={setSavedContent}/>
-    </div>
+      <div
+        className={cx("p-5 bg-jet text-xl text-cream rounded-xl",
+        "border border-cream border-opacity-25",
+        "shadow-[8px_8px_rgba(0,0,0,0.4)]",
+        "inline-block break-all whitespace-pre-line resize overflow-auto select-none",
+        "hover:border-2 hover:border-opacity-75 transition hover:duration-150",
+        "hover:shadow-[16px_16px_rgba(0,0,0,0.3)] hover:translate-x-[-4px] hover:translate-y-[-4px]"
+        )}
+        onDoubleClick={(e) => {
+          setIsConfirmed(false)
+        }}
+      >
+        <MarkdownItem content={content} setContent={setContent} savedContent={savedContent} setSavedContent={setSavedContent}/>
+      </div>
   );
 
   const editingModal = (
