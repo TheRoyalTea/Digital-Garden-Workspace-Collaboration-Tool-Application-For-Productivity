@@ -1,10 +1,21 @@
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import {
+  dark,
+  gruvboxDark,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
+
 type Props = {
   savedContent: string;
-}
-const CodeSnipItem = ({ savedContent }: Props) => {
+  selectedLanguage: string;
+};
+const CodeSnipItem = ({ savedContent, selectedLanguage }: Props) => {
   return (
-    <div>CodeSnipItem</div>
-  )
-}
+    <>
+      <SyntaxHighlighter language={selectedLanguage} style={gruvboxDark} PreTag="div">
+        {savedContent}
+      </SyntaxHighlighter>
+    </>
+  );
+};
 
 export default CodeSnipItem;

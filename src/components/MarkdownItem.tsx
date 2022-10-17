@@ -6,7 +6,7 @@ type Props = {
 };
 
 const MarkdownItem = ({ savedContent }: Props) => {
-  return <ReactMarkdown children={savedContent} remarkPlugins={[remarkGfm]} />;
+  return (<div className="m-5"><ReactMarkdown children={savedContent} remarkPlugins={[remarkGfm]} /></div>);
 };
 
 export default MarkdownItem;
