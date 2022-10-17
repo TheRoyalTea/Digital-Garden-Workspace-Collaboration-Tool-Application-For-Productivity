@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 import MarkdownItem from "./MarkdownItem";
+import CodeSnipItem from "./CodeSnipItem";
+import LinkItem from "./LinkItem";
 
 type Props = {
   name: string;
@@ -48,7 +50,17 @@ const Item = ({ name }: Props) => {
           setIsConfirmed(false)
         }}
       >
-        <MarkdownItem content={content} setContent={setContent} savedContent={savedContent} setSavedContent={setSavedContent}/>
+        {(() => {
+          switch (name) {
+          case "markdown":
+            return <MarkdownItem savedContent={savedContent}/>
+          case "code snip":
+            return <CodeSnipItem savedContent={savedContent}/>
+          case "link":
+            return <LinkItem savedContent={savedContent}/>
+        }
+      })()}
+
       </div>
   );
 
