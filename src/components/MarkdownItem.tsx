@@ -1,17 +1,12 @@
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 type Props = {
-    content: string;
-    setContent: (content: string) => void;
-    savedContent: string;
-    setSavedContent: (savedContent: string) => void;
-}
+  savedContent: string;
+};
 
-const MarkdownItem = ({content, setContent, savedContent, setSavedContent}: Props) => {
-  return (
-    <ReactMarkdown children={savedContent} remarkPlugins={[remarkGfm]}/>
-  )
-}
+const MarkdownItem = ({ savedContent }: Props) => {
+  return (<div className="m-5"><ReactMarkdown children={savedContent} remarkPlugins={[remarkGfm]} /></div>);
+};
 
 export default MarkdownItem;
