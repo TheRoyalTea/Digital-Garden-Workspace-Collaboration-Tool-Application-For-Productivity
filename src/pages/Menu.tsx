@@ -24,7 +24,7 @@ const Menu = ({setIsValidCanvas, setIsNewCanvas, setIsSharedCanvas}: Props) => {
             </div>
 
             <div className="flex justify-center h-[25%]">
-                <button className="box-border border-4 w-[25%] bg-dark-jet border-cream border-dashed drop-shadow-dS" onClick={() => setIsNewCanvas(true)}>
+                <button className="add-box" onClick={() => setIsNewCanvas(true)}>
                     <div className="flex h-[100%] w-[100%] text-cream justify-center items-center">
                         <p className="text-9xl">+</p>
                     </div>
@@ -38,7 +38,7 @@ const Menu = ({setIsValidCanvas, setIsNewCanvas, setIsSharedCanvas}: Props) => {
             </div>
 
             <div className="flex justify-center h-[25%]">
-                <button className="box-border border-4 w-[25%] bg-dark-jet border-cream border-dashed drop-shadow-dS" onClick={() => setIsSharedCanvas(true)}>
+                <button className="add-box" onClick={() => setIsSharedCanvas(true)}>
                     <div className="flex h-[100%] w-[100%] text-cream justify-center items-center">
                         <p className="text-9xl">+</p>
                     </div>
