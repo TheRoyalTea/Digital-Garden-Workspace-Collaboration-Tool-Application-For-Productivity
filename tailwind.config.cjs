@@ -15,6 +15,11 @@ module.exports = {
       "green": "#6A8E7F",
       "pink": "#CDB0CA",
       "black": "#000000",
+    },
+    extend: {
+      dropShadow: {
+        'dS':'20px 20px 4px rgba(0, 0, 0, 0.4)'
+      }
     }
   },
   plugins: [],
