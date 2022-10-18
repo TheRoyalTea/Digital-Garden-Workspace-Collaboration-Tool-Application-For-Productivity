@@ -39,6 +39,9 @@ body {
     @apply absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet 
     h-2/4 w-1/4 grid place-items-center text-cream border rounded-xl;
   }
+  .pop-up-exit-bg {
+    @apply fixed bg-black bg-opacity-50 inset-0 cursor-default w-full h-full;
+  }
   .menu-option {
   @apply flex items-center justify-center w-24 h-24 border-r-2 bg-blue text-cream;
   }
