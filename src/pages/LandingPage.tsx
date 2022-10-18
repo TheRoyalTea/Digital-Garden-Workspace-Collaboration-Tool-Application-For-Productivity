@@ -1,5 +1,8 @@
 import GitHubLogo from "../assets/github-logo.png";
 import Waves from "../assets/landing-waves.svg";
+import Arrows from "../assets/landing-arrows.svg";
+import PoweredBy from "../assets/powered-by.svg";
+import Preview from "../assets/preview.png";
 
 type Props = {
   setIsLoggedIn: (isLoggedIn: boolean) => void;
@@ -14,7 +17,7 @@ const LandingPage = ({
 }: Props) => {
   return (
     <div className="bg-dark-jet h-screen w-full">
-      <div className="bg-black bg-opacity-40 flex flex-col items-center h-screen w-4/12 xs:h-[180px] xs:w-screen xs:items-start xs-min:after:content-'' xs-min:after:bg-black xs-min:after:h-[94%] xs-min:after:w-[7%] xs-min:after:bottom-0 xs-min:after:left-[33.33%] xs-min:after:absolute xs-min:after:opacity-20">
+      <div className="bg-black bg-opacity-40 flex flex-col items-center h-screen w-4/12 xs:h-[180px] xs:w-screen xs:items-start xs-min:after:content-'' xs-min:after:bg-black xs-min:after:h-[94%] xs-min:after:w-[6%] xs-min:after:bottom-0 xs-min:after:left-[33.33%] xs-min:after:absolute xs-min:after:opacity-20">
         <h1 className="text-cream font-bold text-4xl sm:text-base md:text-2xl lg:text-3xl tracking-[0.13em] leading-normal mt-32 xs:mt-8 xs:ml-8">
           <span className="text-blue">d</span>igital&nbsp;
           <span className="text-green">g</span>arden<br></br>
@@ -51,8 +54,37 @@ const LandingPage = ({
       >
         Sign Up
       </button>
-      <img src={Waves} className="absolute top-10 left-[20%] h-[15%] w-[70%]">
-      </img>
+      <img
+        src={Waves}
+        className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75"
+      ></img>
+      <img
+        src={Arrows}
+        className="absolute top-[20%] left-[30%] h-[70%] brightness-[90%]"
+      ></img>
+      <div className="absolute bottom-0 left-[80%]">
+        <div className="relative flex flex-col mb-5 break-words text-cream text-2xl font-light leading-6">
+          <p>
+            <span className="text-red">shape</span>&nbsp;your&nbsp;
+            <span className="text-pink underline">ideas</span>
+          </p>
+          <p>
+            <span className="text-green">refine</span>&nbsp;them
+          </p>
+          <p>
+            <span className="text-blue">collaborate</span>&nbsp;with others
+          </p>
+        </div>
+        <img
+          src={Preview}
+          className="relative h-auto w-[%]"
+          alt="preview"
+        ></img>
+        <img
+          src={PoweredBy}
+          className="relative h-12"
+        ></img>
+      </div>
     </div>
   );
 };
