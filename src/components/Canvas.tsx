@@ -23,6 +23,7 @@ const Canvas = ({canvasItems, setCanvasItems} : Props) => {
   });
 
   return (
+    
     <div
       ref={drop}
       className={cx(
