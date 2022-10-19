@@ -3,6 +3,7 @@ import Waves from "../assets/landing-waves.svg";
 import Arrows from "../assets/landing-arrows.svg";
 import PoweredBy from "../assets/powered-by.svg";
 import Preview from "../assets/preview.png";
+import ColorBlocks from "../assets/colorblocks.svg";
 
 type Props = {
   setIsLoggedIn: (isLoggedIn: boolean) => void;
@@ -58,12 +59,11 @@ const LandingPage = ({
         src={Waves}
         className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75"
       ></img>
-      <img
-        src={Arrows}
-        className="absolute top-[20%] left-[30%] h-[70%] brightness-[90%]"
-      ></img>
-      <div className="absolute bottom-0 left-[80%]">
-        <div className="relative flex flex-col mb-5 break-words text-cream text-2xl font-light leading-6">
+      <img src={ColorBlocks} className="absolute top-[3%] left-[2%] w-[10%] opacity-75 brightness-90" alt="color blocks"></img>
+      <hr className="absolute bottom-0 right-[45%] h-[65%] w-0 border-cream border-l border-dashed "></hr>
+        <hr className="absolute bottom-[70%] h-0 right-0 w-[40%] border-cream border-t border-dashed"></hr>
+      <div className="absolute bottom-0 w-[40%] left-[60%]">
+                <div className="relative flex flex-col mb-5 break-words text-cream text-2xl font-light leading-6">
           <p>
             <span className="text-red">shape</span>&nbsp;your&nbsp;
             <span className="text-pink underline">ideas</span>
@@ -82,7 +82,7 @@ const LandingPage = ({
         ></img>
         <img
           src={PoweredBy}
-          className="relative h-12"
+          className="relative h-12 float-right mb-4 mt-4"
         ></img>
       </div>
     </div>
