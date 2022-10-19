@@ -57,32 +57,36 @@ const LandingPage = ({
       </button>
       <img
         src={Waves}
-        className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75"
+        className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75 xs:top-[150px]"
       ></img>
-      <img src={ColorBlocks} className="absolute top-[3%] left-[2%] w-[10%] opacity-75 brightness-90" alt="color blocks"></img>
-      <hr className="absolute bottom-0 right-[45%] h-[65%] w-0 border-cream border-l border-dashed "></hr>
-        <hr className="absolute bottom-[70%] h-0 right-0 w-[40%] border-cream border-t border-dashed"></hr>
-      <div className="absolute bottom-0 w-[40%] left-[60%]">
-                <div className="relative flex flex-col mb-5 break-words text-cream text-2xl font-light leading-6">
+      <img
+        src={ColorBlocks}
+        className="absolute top-[3%] left-[2%] w-[10%] opacity-75 brightness-90 xs:top-[73%] xs:left-[22%] xs:w-[50%]"
+        alt="color blocks"
+      ></img>
+      <hr className="absolute bottom-0 right-[45%] h-[65%] w-0 border-cream border-l border-dashed xs:hidden"></hr>
+      <hr className="absolute bottom-[70%] h-0 right-0 w-[40%] border-cream border-t border-dashed xs:hidden"></hr>
+      <div className="absolute bottom-0 w-[40%] left-[59%] xs:top-[30%] xs:left-0 xs:w-[100%]">
+        <div className="relative flex-col mb-5 xs-min:break-words text-cream text-2xl font-light leading-6 xs:leading-8">
           <p>
             <span className="text-red">shape</span>&nbsp;your&nbsp;
             <span className="text-pink underline">ideas</span>
           </p>
           <p>
-            <span className="text-green">refine</span>&nbsp;them
+            <span className="text-green xs:ml-10">refine</span>&nbsp;them
           </p>
           <p>
-            <span className="text-blue">collaborate</span>&nbsp;with others
+            <span className="xs:whitespace-nowrap xs:ml-20"><span className="text-blue">collaborate</span>&nbsp;with others</span>
           </p>
         </div>
         <img
           src={Preview}
-          className="relative h-auto w-[%]"
+          className="relative h-auto w-screen"
           alt="preview"
         ></img>
         <img
           src={PoweredBy}
-          className="relative h-12 float-right mb-4 mt-4"
+          className="relative h-12 float-right mb-4 mt-4 xs:absolute xs:bottom-0 xs:right-0"
         ></img>
       </div>
     </div>
