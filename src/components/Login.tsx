@@ -1,18 +1,34 @@
+import { Auth } from "aws-amplify";
+import { useState } from "react";
+
 type Props = {
-  setIsLoggedIn: (isLoggedIn: boolean) => void;
   setLoginRequest: (loginRequest: boolean) => void;
   setRegisterRequest: (registerRequest: boolean) => void;
+  onSignIn: () => void;
 };
 
 const Login = ({
-  setIsLoggedIn,
   setLoginRequest,
   setRegisterRequest,
+  onSignIn,
 }: Props) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const signIn = async () => {
+    try {
+      await Auth.signIn(username, password);
+      onSignIn();
+      setLoginRequest(false);
+    } catch (error) {
+      console.log("error signing in", error);
+    }
+  };
+
   return (
     <>
       <button
-        className="fixed bg-black bg-opacity-50 inset-0 cursor-default"
+        className="pop-up-exit-bg"
         onClick={() => setLoginRequest(false)}
       ></button>
 
@@ -23,16 +39,21 @@ const Login = ({
             <input
               className="form-field mb-[20%]"
               placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             ></input>
             <br />
-            <input className="form-field" placeholder="Password"></input>
+            <input
+              className="form-field"
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
           </form>
           <button
             className="button-blue h-12 w-40"
-            onClick={() => {
-              setLoginRequest(false);
-              setIsLoggedIn(true);
-            }}
+            onClick={signIn}
           >
             Login
           </button>
