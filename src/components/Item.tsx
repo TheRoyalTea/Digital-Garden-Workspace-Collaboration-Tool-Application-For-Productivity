@@ -69,16 +69,16 @@ const Item = ({ name }: Props) => {
   const editingModal = (
     <div
       className={cx(
-        "h-[calc(100%-80px)] w-[calc(100%-80px)] absolute m-10 bg-jet bg-opacity-50 text-xl text-cream rounded-xl",
+        "h-[calc(100%-80px)] w-[calc(100%-80px)] absolute bg-jet bg-opacity-50 text-xl text-cream rounded-xl",
         "border border-cream border-opacity-25",
         "shadow-[24px_24px_rgba(0,0,0,0.3)]",
-        "flex justify-center items-center",
+        "flex flex-col justify-center p-16",
         "transition duration-200",
         "hover:border-2 hover:border-opacity-75 hover:bg-opacity-100 hover:duration-300"
       )}
     >
       <textarea
-        className="text-xl border text-cream bg-jet rounded-xl"
+        className="text-xl border text-cream bg-jet h-48 rounded-xl"
         placeholder="Enter text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
@@ -97,7 +97,7 @@ const Item = ({ name }: Props) => {
           ))}
         </select>
       )}
-
+      <div className="flex justify-center items-center mt-4">
       <button
         className="w-40 h-12 text-xl border text-cream bg-jet rounded-xl"
         onClick={handleConfirm}
@@ -118,6 +118,7 @@ const Item = ({ name }: Props) => {
       >
         Cancel
       </button>
+      </div>
     </div>
   );
 
