@@ -34,7 +34,7 @@ const App = () => {
       {(!isLoggedIn && !isValidCanvas) && <LandingPage setIsLoggedIn={setIsLoggedIn} setLoginRequest={setLoginRequest} setRegisterRequest={setRegisterRequest}/>}
       {(isLoggedIn && !isValidCanvas) && <Menu setIsValidCanvas={setIsValidCanvas} setIsNewCanvas={setIsNewCanvas} setIsSharedCanvas={setIsSharedCanvas}/>}
       {(isLoggedIn && isValidCanvas) && <Board user={user}/>}
-      {loginRequest && <Login setIsLoggedIn={setIsLoggedIn} setLoginRequest={setLoginRequest} setRegisterRequest={setRegisterRequest}/>}
+      {loginRequest && <Login onSignIn={onSignIn} setLoginRequest={setLoginRequest} setRegisterRequest={setRegisterRequest}/>}
       {registerRequest && <Register setLoginRequest={setLoginRequest} setRegisterRequest={setRegisterRequest}/>}
       {isNewCanvas && <CreateCanvas setIsNewCanvas={setIsNewCanvas} setIsValidCanvas={setIsValidCanvas}/>}
       {isSharedCanvas && <SharedCanvas setIsSharedCanvas={setIsSharedCanvas} setIsValidCanvas={setIsValidCanvas}/>}

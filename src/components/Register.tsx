@@ -47,7 +47,7 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
       <div>
         <div className="pop-up-box">
           <p className="text-7xl text-cream">Register</p>
-          <form>
+          {!proceed && (<form>
             <input
               className="form-field mb-[10%]"
               placeholder="Email"
@@ -69,7 +69,7 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-          </form>
+          </form>)}
           {proceed && (<input
               className="form-field mb-[10%]"
               placeholder="Email code"
