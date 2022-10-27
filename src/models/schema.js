@@ -237,6 +237,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "file": {
+                    "name": "file",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "canvasID": {
                     "name": "canvasID",
                     "isArray": false,
@@ -474,5 +481,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "af6e656339ef00b6a052e94dac249cf1"
+    "version": "f1ab79519e6e9f1afde25c9df529e693"
 };

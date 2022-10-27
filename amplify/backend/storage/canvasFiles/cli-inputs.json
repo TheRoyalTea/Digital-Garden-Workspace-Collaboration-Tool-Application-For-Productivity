@@ -1,0 +1,14 @@
+{
+  "resourceName": "canvasFiles",
+  "policyUUID": "b2a9051b",
+  "bucketName": "digitalgardentakoyaki",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

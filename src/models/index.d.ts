@@ -57,6 +57,7 @@ export declare class Item {
   readonly height?: number | null;
   readonly type?: ItemType | keyof typeof ItemType | null;
   readonly content?: string | null;
+  readonly file?: string | null;
   readonly canvasID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
