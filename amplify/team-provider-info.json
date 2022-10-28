@@ -15,11 +15,11 @@
       "auth": {
         "digitalgardenworkspa9603a69f": {}
       },
-      "api": {
-        "DigitalGardenWorkspaceCollaborationToolApplicationForProductivity": {}
-      },
       "storage": {
         "canvasFiles": {}
+      },
+      "api": {
+        "digitalgardenworkspa": {}
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "AppSyncApiName": "DigitalGardenWorkspaceCollaborationToolApplicationForProductivity",
+  "AppSyncApiName": "digitalgardenworkspa",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false
 }
