@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -9,23 +10,26 @@ export const onCreateEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       editableCanvasId
       editableUserId
     }
@@ -39,23 +43,26 @@ export const onUpdateEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       editableCanvasId
       editableUserId
     }
@@ -69,23 +76,26 @@ export const onDeleteEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       editableCanvasId
       editableUserId
     }
@@ -99,23 +109,26 @@ export const onCreateViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       viewableCanvasId
       viewableUserId
     }
@@ -129,23 +142,26 @@ export const onUpdateViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       viewableCanvasId
       viewableUserId
     }
@@ -159,23 +175,26 @@ export const onDeleteViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       viewableCanvasId
       viewableUserId
     }
@@ -195,6 +214,9 @@ export const onCreateItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -212,6 +234,9 @@ export const onUpdateItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -229,6 +254,9 @@ export const onDeleteItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -239,23 +267,14 @@ export const onCreateCanvas = /* GraphQL */ `
       name
       userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -266,23 +285,14 @@ export const onUpdateCanvas = /* GraphQL */ `
       name
       userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -293,23 +303,14 @@ export const onDeleteCanvas = /* GraphQL */ `
       name
       userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -319,17 +320,14 @@ export const onCreateUser = /* GraphQL */ `
       id
       username
       owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -339,17 +337,14 @@ export const onUpdateUser = /* GraphQL */ `
       id
       username
       owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;
@@ -359,17 +354,14 @@ export const onDeleteUser = /* GraphQL */ `
       id
       username
       owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
   }
 `;

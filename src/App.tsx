@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateCanvas from "./components/CreateCanvas";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -7,9 +7,11 @@ import Board from "./pages/Board";
 import LandingPage from "./pages/LandingPage";
 import Menu from "./pages/Menu";
 
-import { withAuthenticator, Button, Heading } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
-import { Auth } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import { GraphQLResult } from "@aws-amplify/api";
+
+
 //@ts-ignore
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +31,15 @@ const App = () => {
       .catch((err) => console.log(err));
   };
 
+  // const getUsersList = async () => {
+  //   const users: GraphQLResult<any> = await API.graphql(graphqlOperation(listUsers));
+  //   console.log(users.data.listUsers.items);
+  // }
+
+  //   useEffect(() => {
+  //     getUsersList();
+  //   }, [])
+    
   return (
     <>
       {(!isLoggedIn && !isValidCanvas) && <LandingPage setIsLoggedIn={setIsLoggedIn} setLoginRequest={setLoginRequest} setRegisterRequest={setRegisterRequest}/>}
