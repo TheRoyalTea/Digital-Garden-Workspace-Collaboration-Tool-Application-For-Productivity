@@ -12,6 +12,7 @@ const Register = ({ setLoginRequest, setRegisterRequest }: Props) => {
   const [email, setEmail] = useState("");
   const [proceed, setProceed] = useState(false);
   const [code, setCode] = useState("");
+  
   const signUp = async () => {
     try {
       await Auth.signUp({

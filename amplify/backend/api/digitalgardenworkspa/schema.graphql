@@ -1,13 +1,13 @@
 type Editable @model @auth(rules: [{allow: public}]) {
   id: ID!
   canvas: Canvas @hasOne
-  user: User @hasOne
+  userID: String!
 }
 
 type Viewable @model @auth(rules: [{allow: public}]) {
   id: ID!
   canvas: Canvas @hasOne
-  user: User @hasOne
+  userID: String!
 }
 
 enum ItemType {
@@ -31,13 +31,7 @@ type Item @model @auth(rules: [{allow: public}]) {
 type Canvas @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
-  userID: ID! @index(name: "byUser")
   items: [Item] @hasMany(indexName: "byCanvas", fields: ["id"])
-}
-
-type User @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  username: String
-  owned: [Canvas] @hasMany(indexName: "byUser", fields: ["id"])
+  userID: String!
 }
  

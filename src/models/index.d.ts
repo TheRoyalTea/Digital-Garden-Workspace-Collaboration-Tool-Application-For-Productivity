@@ -18,10 +18,6 @@ type ItemMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type UserMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
 type ViewableMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -29,11 +25,10 @@ type ViewableMetaData = {
 export declare class Editable {
   readonly id: string;
   readonly canvas?: Canvas | null;
-  readonly user?: User | null;
+  readonly userID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly editableCanvasId?: string | null;
-  readonly editableUserId?: string | null;
   constructor(init: ModelInit<Editable, EditableMetaData>);
   static copyOf(source: Editable, mutator: (draft: MutableModel<Editable, EditableMetaData>) => MutableModel<Editable, EditableMetaData> | void): Editable;
 }
@@ -41,8 +36,8 @@ export declare class Editable {
 export declare class Canvas {
   readonly id: string;
   readonly name?: string | null;
-  readonly userID: string;
   readonly items?: (Item | null)[] | null;
+  readonly userID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Canvas, CanvasMetaData>);
@@ -65,24 +60,13 @@ export declare class Item {
   static copyOf(source: Item, mutator: (draft: MutableModel<Item, ItemMetaData>) => MutableModel<Item, ItemMetaData> | void): Item;
 }
 
-export declare class User {
-  readonly id: string;
-  readonly username?: string | null;
-  readonly owned?: (Canvas | null)[] | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<User, UserMetaData>);
-  static copyOf(source: User, mutator: (draft: MutableModel<User, UserMetaData>) => MutableModel<User, UserMetaData> | void): User;
-}
-
 export declare class Viewable {
   readonly id: string;
   readonly canvas?: Canvas | null;
-  readonly user?: User | null;
+  readonly userID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly viewableCanvasId?: string | null;
-  readonly viewableUserId?: string | null;
   constructor(init: ModelInit<Viewable, ViewableMetaData>);
   static copyOf(source: Viewable, mutator: (draft: MutableModel<Viewable, ViewableMetaData>) => MutableModel<Viewable, ViewableMetaData> | void): Viewable;
 }

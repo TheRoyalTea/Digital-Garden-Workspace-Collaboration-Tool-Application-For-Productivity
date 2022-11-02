@@ -8,13 +8,12 @@ const ItemType = {
   "LINK": "LINK"
 };
 
-const { Editable, Canvas, Item, User, Viewable } = initSchema(schema);
+const { Editable, Canvas, Item, Viewable } = initSchema(schema);
 
 export {
   Editable,
   Canvas,
   Item,
-  User,
   Viewable,
   ItemType
 };

@@ -9,7 +9,6 @@ Amplify.configure(config);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    {/*@ts-ignore*/}
     <App />
   </React.StrictMode>
 )
