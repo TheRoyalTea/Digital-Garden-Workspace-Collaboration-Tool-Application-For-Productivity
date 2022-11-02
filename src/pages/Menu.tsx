@@ -40,12 +40,12 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
           <div className="h-0.5 flex-1 bg-cream"></div>
         </div>
 
-        <div className="flex justify-center h-[25%]">
+        <div className="flex justify-center items-center h-[30%] gap-6 overflow-x-scroll first:ml-auto last:mr-auto">
           {canvasList.map((canvas: any) => (
-            <div className="flex h-[100%] w-[100%] text-cream justify-center items-center add-box border-solid">
-              <p className="text-3xl">{canvas.name}</p>
-              <p className="text-xl">canvas ID: {canvas.id}</p>
-              <p className="text-xl">user ID: {canvas.userID}</p>
+            <div className="flex flex-col h-[80%] w-96 text-cream justify-center items-center add-box border-solid hover:scale-110 transition-all">
+              <p className="text-xl">{canvas.name}</p>
+              <p className="text-base">canvas ID: {canvas.id}</p>
+              <p className="text-base">user ID: {canvas.userID}</p>
               <button
                 className="button-blue h-12 w-40 bg-green"
                 onClick={() => {
@@ -57,7 +57,7 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
             </div>
           ))}
           <button className="add-box" onClick={() => setIsNewCanvas(true)}>
-            <div className="flex h-[100%] w-[100%] text-cream justify-center items-center">
+            <div className="flex h-[80%] w-60 text-cream justify-center items-center">
               <p className="text-9xl">+</p>
             </div>
           </button>
