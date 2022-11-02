@@ -3,8 +3,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateEditable = /* GraphQL */ `
-  subscription OnCreateEditable($filter: ModelSubscriptionEditableFilterInput) {
-    onCreateEditable(filter: $filter) {
+  subscription OnCreateEditable {
+    onCreateEditable {
       id
       canvas {
         id
@@ -12,32 +12,17 @@ export const onCreateEditable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
 export const onUpdateEditable = /* GraphQL */ `
-  subscription OnUpdateEditable($filter: ModelSubscriptionEditableFilterInput) {
-    onUpdateEditable(filter: $filter) {
+  subscription OnUpdateEditable {
+    onUpdateEditable {
       id
       canvas {
         id
@@ -45,32 +30,17 @@ export const onUpdateEditable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
 export const onDeleteEditable = /* GraphQL */ `
-  subscription OnDeleteEditable($filter: ModelSubscriptionEditableFilterInput) {
-    onDeleteEditable(filter: $filter) {
+  subscription OnDeleteEditable {
+    onDeleteEditable {
       id
       canvas {
         id
@@ -78,32 +48,17 @@ export const onDeleteEditable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
 export const onCreateViewable = /* GraphQL */ `
-  subscription OnCreateViewable($filter: ModelSubscriptionViewableFilterInput) {
-    onCreateViewable(filter: $filter) {
+  subscription OnCreateViewable {
+    onCreateViewable {
       id
       canvas {
         id
@@ -111,32 +66,17 @@ export const onCreateViewable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
 export const onUpdateViewable = /* GraphQL */ `
-  subscription OnUpdateViewable($filter: ModelSubscriptionViewableFilterInput) {
-    onUpdateViewable(filter: $filter) {
+  subscription OnUpdateViewable {
+    onUpdateViewable {
       id
       canvas {
         id
@@ -144,32 +84,17 @@ export const onUpdateViewable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
 export const onDeleteViewable = /* GraphQL */ `
-  subscription OnDeleteViewable($filter: ModelSubscriptionViewableFilterInput) {
-    onDeleteViewable(filter: $filter) {
+  subscription OnDeleteViewable {
+    onDeleteViewable {
       id
       canvas {
         id
@@ -177,32 +102,17 @@ export const onDeleteViewable = /* GraphQL */ `
         userID
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
 export const onCreateItem = /* GraphQL */ `
-  subscription OnCreateItem($filter: ModelSubscriptionItemFilterInput) {
-    onCreateItem(filter: $filter) {
+  subscription OnCreateItem {
+    onCreateItem {
       id
       xloc
       yloc
@@ -214,15 +124,12 @@ export const onCreateItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const onUpdateItem = /* GraphQL */ `
-  subscription OnUpdateItem($filter: ModelSubscriptionItemFilterInput) {
-    onUpdateItem(filter: $filter) {
+  subscription OnUpdateItem {
+    onUpdateItem {
       id
       xloc
       yloc
@@ -234,15 +141,12 @@ export const onUpdateItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const onDeleteItem = /* GraphQL */ `
-  subscription OnDeleteItem($filter: ModelSubscriptionItemFilterInput) {
-    onDeleteItem(filter: $filter) {
+  subscription OnDeleteItem {
+    onDeleteItem {
       id
       xloc
       yloc
@@ -254,114 +158,48 @@ export const onDeleteItem = /* GraphQL */ `
       canvasID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const onCreateCanvas = /* GraphQL */ `
-  subscription OnCreateCanvas($filter: ModelSubscriptionCanvasFilterInput) {
-    onCreateCanvas(filter: $filter) {
+  subscription OnCreateCanvas {
+    onCreateCanvas {
       id
       name
-      userID
       items {
         nextToken
-        startedAt
       }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const onUpdateCanvas = /* GraphQL */ `
-  subscription OnUpdateCanvas($filter: ModelSubscriptionCanvasFilterInput) {
-    onUpdateCanvas(filter: $filter) {
+  subscription OnUpdateCanvas {
+    onUpdateCanvas {
       id
       name
-      userID
       items {
         nextToken
-        startedAt
       }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
 export const onDeleteCanvas = /* GraphQL */ `
-  subscription OnDeleteCanvas($filter: ModelSubscriptionCanvasFilterInput) {
-    onDeleteCanvas(filter: $filter) {
+  subscription OnDeleteCanvas {
+    onDeleteCanvas {
       id
       name
-      userID
       items {
         nextToken
-        startedAt
       }
+      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-    onCreateUser(filter: $filter) {
-      id
-      username
-      owned {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
-    onUpdateUser(filter: $filter) {
-      id
-      username
-      owned {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-    onDeleteUser(filter: $filter) {
-      id
-      username
-      owned {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;

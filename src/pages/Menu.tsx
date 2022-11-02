@@ -2,7 +2,7 @@ import { GraphQLResult } from "@aws-amplify/api-graphql";
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import Observable from "zen-observable-ts";
-import { createCanvas, listCanvas } from "../graphql";
+import { listCanvas, deleteCanvas } from "../graphql";
 import Board from "../pages/Board";
 import Topbar from "../components/Topbar";
 import Canvas from "../components/Canvas";
@@ -20,10 +20,29 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
   const [canvasList, setCanvasList] = useState<any>([]);
 
   const fetchCanvases = async (req?: GraphQLResult<any> | Observable<any>) => {
-    const canvases: GraphQLResult<any> = await API.graphql(
-      graphqlOperation(listCanvas)
-    );
+    const canvases: GraphQLResult<any> = await API.graphql({
+      query: listCanvas,
+      variables: {
+        filter: {
+          userID: {
+            eq: user.pool.clientID,
+          },
+        },
+      },
+    });
     setCanvasList(canvases.data.listCanvas.items);
+  };
+
+  const removeCanvas = async (id: string) => {
+    setCanvasList(canvasList.filter((canvas: any) => canvas.id !== id));
+    await API.graphql({
+      query: deleteCanvas,
+      variables: {
+        input: {
+          id,
+        },
+      },
+    });
   };
 
   useEffect(() => {
@@ -53,6 +72,14 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
                 }}
               >
                 Open
+              </button>
+              <button
+                className="button-blue h-12 w-40 bg-red"
+                onClick={() => {
+                  removeCanvas(canvas.id);
+                }}
+              >
+                Delete
               </button>
             </div>
           ))}
