@@ -58,7 +58,7 @@ const LandingPage = ({ onSignIn }: Props) => {
         </button>
         <img
           src={Waves}
-          className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75 xs:top-[150px]"
+          className="absolute top-10 left-[20%] h-[15%] w-[70%] brightness-75 xs:top-[150px] pointer-events-none"
         ></img>
         <img
           src={ColorBlocks}
