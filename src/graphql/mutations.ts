@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -12,25 +13,13 @@ export const createEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
@@ -45,25 +34,13 @@ export const updateEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
@@ -78,25 +55,13 @@ export const deleteEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
@@ -111,25 +76,13 @@ export const createViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
@@ -144,25 +97,13 @@ export const updateViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
@@ -177,25 +118,13 @@ export const deleteViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
@@ -267,23 +196,10 @@ export const createCanvas = /* GraphQL */ `
     createCanvas(input: $input, condition: $condition) {
       id
       name
-      userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
       }
+      userID
       createdAt
       updatedAt
     }
@@ -297,23 +213,10 @@ export const updateCanvas = /* GraphQL */ `
     updateCanvas(input: $input, condition: $condition) {
       id
       name
-      userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
       }
+      userID
       createdAt
       updatedAt
     }
@@ -327,92 +230,10 @@ export const deleteCanvas = /* GraphQL */ `
     deleteCanvas(input: $input, condition: $condition) {
       id
       name
-      userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
       }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      username
-      owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      username
-      owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      username
-      owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
+      userID
       createdAt
       updatedAt
     }

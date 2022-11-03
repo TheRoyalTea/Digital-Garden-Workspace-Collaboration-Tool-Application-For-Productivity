@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -9,25 +10,13 @@ export const getEditable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       editableCanvasId
-      editableUserId
     }
   }
 `;
@@ -40,23 +29,10 @@ export const listEditables = /* GraphQL */ `
     listEditables(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        canvas {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          username
-          createdAt
-          updatedAt
-        }
+        userID
         createdAt
         updatedAt
         editableCanvasId
-        editableUserId
       }
       nextToken
     }
@@ -70,25 +46,13 @@ export const getViewable = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
         createdAt
         updatedAt
       }
-      user {
-        id
-        username
-        owned {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
+      userID
       createdAt
       updatedAt
       viewableCanvasId
-      viewableUserId
     }
   }
 `;
@@ -101,23 +65,10 @@ export const listViewables = /* GraphQL */ `
     listViewables(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        canvas {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        user {
-          id
-          username
-          createdAt
-          updatedAt
-        }
+        userID
         createdAt
         updatedAt
         viewableCanvasId
-        viewableUserId
       }
       nextToken
     }
@@ -169,23 +120,10 @@ export const getCanvas = /* GraphQL */ `
     getCanvas(id: $id) {
       id
       name
-      userID
       items {
-        items {
-          id
-          xloc
-          yloc
-          width
-          height
-          type
-          content
-          file
-          canvasID
-          createdAt
-          updatedAt
-        }
         nextToken
       }
+      userID
       createdAt
       updatedAt
     }
@@ -202,49 +140,6 @@ export const listCanvas = /* GraphQL */ `
         id
         name
         userID
-        items {
-          nextToken
-        }
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
-      id
-      username
-      owned {
-        items {
-          id
-          name
-          userID
-          createdAt
-          updatedAt
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        username
-        owned {
-          nextToken
-        }
         createdAt
         updatedAt
       }

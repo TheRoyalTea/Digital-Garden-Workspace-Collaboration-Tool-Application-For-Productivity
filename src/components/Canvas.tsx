@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
+import { API } from "aws-amplify";
 import cx from "classnames";
 import Item from "./Item";
 
 // fix types
 type Props = {
-    canvasItems: any;
-    setCanvasItems: (canvasItems: any) => void;
+  canvasItems: any;
+  setCanvasItems: (canvasItems: any) => void;
 };
 
-const Canvas = ({canvasItems, setCanvasItems} : Props) => {
+const Canvas = ({ canvasItems, setCanvasItems }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [{ isOver }, drop] = useDrop({
     accept: "toolbarItem",
@@ -23,7 +24,6 @@ const Canvas = ({canvasItems, setCanvasItems} : Props) => {
   });
 
   return (
-    
     <div
       ref={drop}
       className={cx(
