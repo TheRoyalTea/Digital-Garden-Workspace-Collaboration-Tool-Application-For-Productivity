@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import cx from "classnames";
 import { Prism } from "react-syntax-highlighter";
 import { API } from "aws-amplify";
-import { createItem } from "../graphql";
+import {
+  createItem as create,
+  listItems,
+  updateItem as update,
+} from "../graphql";
 
 type Props = {
-  type: string | null;
+  requestedModal: string | null;
   activeCanvas: any;
   canvasItems: any;
   setCanvasItems: (canvasItems: any) => void;
@@ -13,7 +17,7 @@ type Props = {
 };
 
 const ItemModal = ({
-  type,
+  requestedModal,
   activeCanvas,
   setCanvasItems,
   canvasItems,
@@ -22,13 +26,30 @@ const ItemModal = ({
   const [content, setContent] = useState("");
   const [savedContent, setSavedContent] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
+  
+  const types = ["MARKDOWN", "CODE", "LINK"];
 
-  const newItem = async () => {
+  const fetchItem = async () => {
     const item: any = await API.graphql({
-      query: createItem,
+      query: listItems,
+      variables: {
+        filter: {
+          id: {
+            eq: requestedModal,
+          },
+        },
+      },
+    });
+    setSavedContent(item.data.listItems.items[0].content);
+    setContent(item.data.listItems.items[0].content);
+  };
+
+  const createItem = async () => {
+    const item: any = await API.graphql({
+      query: create,
       variables: {
         input: {
-          type: type,
+          type: requestedModal,
           content: content,
           canvasID: activeCanvas.id,
         },
@@ -37,9 +58,36 @@ const ItemModal = ({
     setCanvasItems([...canvasItems, item.data.createItem]);
   };
 
+  const updateItem = async () => {
+    try {
+      const item: any = await API.graphql({
+        query: update,
+        variables: {
+          input: {
+            id: requestedModal,
+            content: content,
+          },
+        },
+      });
+      const updatedCanvasItems = canvasItems.map((canvasItem: any) => {
+        if (canvasItem.id === item.data.updateItem.id) {
+          return item.data.updateItem;
+        }
+        return canvasItem;
+      });
+      setCanvasItems(updatedCanvasItems);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const handleConfirm = () => {
     setSavedContent(content);
-    newItem();
+    // FIXME: to differentiate between a new item and an existing item
+    if (requestedModal && types.includes(requestedModal)) {
+      createItem();
+    } else {
+      updateItem();
+    }
     setRequestedModal(null);
   };
 
@@ -60,6 +108,12 @@ const ItemModal = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
+  useEffect(() => {
+    if (requestedModal && !types.includes(requestedModal)) {
+      fetchItem();
+    }
+  }, []);
+
   return (
     <div
       className={cx(
@@ -78,7 +132,7 @@ const ItemModal = ({
         onChange={(e) => setContent(e.target.value)}
         autoFocus
       ></textarea>
-      {type === "CODE" && (
+      {requestedModal === "CODE" && (
         <select
           className="text-xl border text-cream bg-jet rounded-xl"
           value={selectedLanguage}

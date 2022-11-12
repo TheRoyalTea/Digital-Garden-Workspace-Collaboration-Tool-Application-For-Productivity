@@ -44,11 +44,14 @@ const Canvas = ({
       )}
     >
       {(canvasItems as any[]).map(
-        (item: any) => (console.log(item), (<Item data={item} />))
+        (item: any) => (
+          console.log(item),
+          (<Item data={item} setRequestedModal={setRequestedModal} />)
+        )
       )}
       {requestedModal ? (
         <ItemModal
-          type={requestedModal}
+          requestedModal={requestedModal}
           activeCanvas={activeCanvas}
           canvasItems={canvasItems}
           setCanvasItems={setCanvasItems}

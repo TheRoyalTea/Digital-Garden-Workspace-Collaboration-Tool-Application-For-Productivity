@@ -7,9 +7,10 @@ import LinkItem from "./LinkItem";
 
 type Props = {
   data: any;
+  setRequestedModal: (requestedModal: string | null) => void;
 };
 
-const Item = ({ data }: Props) => {
+const Item = ({ data, setRequestedModal }: Props) => {
   return (
     <div
       className={cx(
@@ -22,7 +23,8 @@ const Item = ({ data }: Props) => {
         data.name === "code snip" ? "bg-gruv-dark" : "bg-jet"
       )}
       onDoubleClick={(e) => {
-        console.log("summon modal using item id");
+        // TODO: add double click to edit (open modal with item id, content, and type)
+        setRequestedModal(data.id);
       }}
     >
       {(() => {
