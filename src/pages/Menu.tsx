@@ -34,15 +34,19 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
   };
 
   const removeCanvas = async (id: string) => {
-    setCanvasList(canvasList.filter((canvas: any) => canvas.id !== id));
-    await API.graphql({
-      query: deleteCanvas,
-      variables: {
-        input: {
-          id,
+    try {
+      await API.graphql({
+        query: deleteCanvas,
+        variables: {
+          input: {
+            id,
+          },
         },
-      },
-    });
+      });
+      setCanvasList(canvasList.filter((canvas: any) => canvas.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
