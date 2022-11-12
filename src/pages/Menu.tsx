@@ -30,7 +30,14 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
         },
       },
     });
-    setCanvasList(canvases.data.listCanvas.items);
+    if (req) {
+      setCanvasList((canvasList: any) => [
+        ...canvasList,
+        canvases.data.listCanvas.items[0],
+      ]);
+    } else {
+      setCanvasList(canvases.data.listCanvas.items);
+    }
   };
 
   const removeCanvas = async (id: string) => {

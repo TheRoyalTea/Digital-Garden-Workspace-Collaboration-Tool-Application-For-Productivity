@@ -14,6 +14,7 @@ type Props = {
 };
 const Board = ({ user, activeCanvas, setActiveCanvas }: Props) => {
   const [canvasItems, setCanvasItems] = useState<any>([]);
+  const [requestedModal, setRequestedModal] = useState<string | null>(null);
 
   const fetchCanvasItems = async () => {
     const canvasItems: any = await API.graphql({
@@ -26,7 +27,7 @@ const Board = ({ user, activeCanvas, setActiveCanvas }: Props) => {
         },
       },
     });
-    setCanvasItems(canvasItems.data.listCanvasItems.items);
+    setCanvasItems(canvasItems.data.listItems.items);
   };
 
   useEffect(() => {
@@ -40,8 +41,20 @@ const Board = ({ user, activeCanvas, setActiveCanvas }: Props) => {
     <>
       <Menubar />
       <DndProvider backend={HTML5Backend}>
-        <Toolbar canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
-        <Canvas canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
+        <Toolbar
+          canvasItems={canvasItems}
+          setCanvasItems={setCanvasItems}
+          activeCanvas={activeCanvas}
+          requestedModal={requestedModal}
+          setRequestedModal={setRequestedModal}
+        />
+        <Canvas
+          canvasItems={canvasItems}
+          setCanvasItems={setCanvasItems}
+          activeCanvas={activeCanvas}
+          requestedModal={requestedModal}
+          setRequestedModal={setRequestedModal}
+        />
       </DndProvider>
     </>
   );
