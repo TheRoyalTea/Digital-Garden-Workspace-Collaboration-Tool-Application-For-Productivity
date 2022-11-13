@@ -2,7 +2,12 @@ import { GraphQLResult } from "@aws-amplify/api-graphql";
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
 import Observable from "zen-observable-ts";
-import { listCanvas, deleteCanvas } from "../graphql";
+import {
+  createCanvas,
+  listCanvas,
+  deleteCanvas,
+  updateCanvas,
+} from "../graphql";
 import Board from "../pages/Board";
 import Topbar from "../components/Topbar";
 import Canvas from "../components/Canvas";
@@ -18,8 +23,11 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
   const [isNewCanvas, setIsNewCanvas] = useState(false);
   const [isSharedCanvas, setIsSharedCanvas] = useState(false);
   const [canvasList, setCanvasList] = useState<any>([]);
+  const [canvasNames, setCanvasNames] = useState<string[]>([]);
 
-  const fetchCanvases = async (req?: GraphQLResult<any> | Observable<any>) => {
+  const fetchCanvases = async (
+    newCanvas?: GraphQLResult<any> | Observable<any>
+  ) => {
     const canvases: GraphQLResult<any> = await API.graphql({
       query: listCanvas,
       variables: {
@@ -30,7 +38,34 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
         },
       },
     });
-    setCanvasList(canvases.data.listCanvas.items);
+    if (newCanvas) {
+      setCanvasList((canvasList: any) => [
+        ...canvasList,
+        canvases.data.listCanvas.items[0],
+      ]);
+      setCanvasNames((canvasNames: string[]) => [
+        canvases.data.listCanvas.items.name,
+      ]);
+    } else {
+      setCanvasList(canvases.data.listCanvas.items);
+      setCanvasNames(
+        canvases.data.listCanvas.items.map((canvas: any) => canvas.name)
+      );
+    }
+  };
+
+  const updateCanvasName = async (id: string, name: string) => {
+    const req = await API.graphql({
+      query: updateCanvas,
+      variables: {
+        input: {
+          id: id,
+          name: name,
+        },
+      },
+    });
+    // TODO: update canvas name in canvasList
+    fetchCanvases();
   };
 
   const removeCanvas = async (id: string) => {
@@ -64,9 +99,22 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
         </div>
 
         <div className="flex justify-center items-center h-[30%] gap-6 overflow-x-scroll first:ml-auto last:mr-auto">
-          {canvasList.map((canvas: any) => (
+          {canvasList.map((canvas: any, idx: number) => (
             <div className="flex flex-col h-[80%] w-96 text-cream justify-center items-center add-box border-solid hover:scale-110 transition-all">
-              <p className="text-xl">{canvas.name}</p>
+              <input
+                value={canvasNames[idx]}
+                onChange={(e) => {
+                  // FIXME: expensive
+                  setCanvasNames((canvasNames: string[]) => {
+                    canvasNames[idx] = e.target.value;
+                    return canvasNames;
+                  });
+                }}
+                onBlur={() => {
+                  updateCanvasName(canvas.id, canvasNames[idx]);
+                }}
+                className="text-xl outline-none border-none bg-[transparent]"
+              ></input>
               <p className="text-base">canvas ID: {canvas.id}</p>
               <p className="text-base">user ID: {canvas.userID}</p>
               <button
@@ -113,8 +161,8 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
         <CreateCanvas
           setIsOpened={setIsNewCanvas}
           setActiveCanvas={setActiveCanvas}
-          fetchNewCanvas={fetchCanvases}
-          userID={user.pool.clientId}
+          user={user}
+          fetchCanvases={fetchCanvases}
         />
       )}
 

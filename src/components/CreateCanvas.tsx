@@ -2,30 +2,37 @@ import { useState } from "react";
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import Observable from "zen-observable-ts";
 import { API } from "aws-amplify";
-import { createCanvas } from "../graphql";
+import { createCanvas as create } from "../graphql";
 
 type Props = {
   setIsOpened: (isNewCanvas: boolean) => void;
   setActiveCanvas: (activeCanvas: any) => void;
-	fetchNewCanvas: (req?: GraphQLResult<any> | Observable<any>) => void;
-	userID: string;
+  user: any;
+  fetchCanvases: (newCanvas?: GraphQLResult<any> | Observable<any>) => void;
 };
 
-const CreateCanvas = ({ setIsOpened, setActiveCanvas, fetchNewCanvas, userID }: Props) => {
+const CreateCanvas = ({
+  setIsOpened,
+  setActiveCanvas,
+  user,
+  fetchCanvases,
+}: Props) => {
   const [name, setName] = useState("");
 
-	const newCanvas = async () => {
+  const newCanvas = async () => {
     const req = await API.graphql({
-      query: createCanvas,
+      query: create,
       variables: {
         input: {
-          userID: userID,
+          userID: user.pool.clientId,
           name: name,
         },
       },
     });
-    fetchNewCanvas(req);
+    // TODO: fetch only new canvas instead of all canvases
+    fetchCanvases();
   };
+
   return (
     <>
       <button
@@ -49,8 +56,8 @@ const CreateCanvas = ({ setIsOpened, setActiveCanvas, fetchNewCanvas, userID }: 
           <button
             className="button-blue h-12 w-40"
             onClick={() => {
-							newCanvas();
-							setIsOpened(false);
+              newCanvas();
+              setIsOpened(false);
             }}
           >
             Create

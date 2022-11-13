@@ -3,19 +3,29 @@ import { useDrop } from "react-dnd";
 import { API } from "aws-amplify";
 import cx from "classnames";
 import Item from "./Item";
+import ItemModal from "./ItemModal";
 
 // fix types
 type Props = {
   canvasItems: any;
   setCanvasItems: (canvasItems: any) => void;
+  activeCanvas: any;
+  requestedModal: string | null;
+  setRequestedModal: (requestedModal: string | null) => void;
 };
 
-const Canvas = ({ canvasItems, setCanvasItems }: Props) => {
+const Canvas = ({
+  canvasItems,
+  setCanvasItems,
+  activeCanvas,
+  requestedModal,
+  setRequestedModal,
+}: Props) => {
   const [isEditing, setIsEditing] = useState(false);
   const [{ isOver }, drop] = useDrop({
     accept: "toolbarItem",
-    drop: (item) => {
-      setCanvasItems((canvasItems: any) => [...canvasItems, item]);
+    drop: (item: any) => {
+      setRequestedModal(item.type);
       console.log(item);
     },
     collect: (monitor) => ({
@@ -34,8 +44,18 @@ const Canvas = ({ canvasItems, setCanvasItems }: Props) => {
       )}
     >
       {(canvasItems as any[]).map((item: any) => (
-        <Item name={item.name} />
+        <Item data={item} setRequestedModal={setRequestedModal} />
       ))}
+
+      {requestedModal ? (
+        <ItemModal
+          requestedModal={requestedModal}
+          activeCanvas={activeCanvas}
+          canvasItems={canvasItems}
+          setCanvasItems={setCanvasItems}
+          setRequestedModal={setRequestedModal}
+        />
+      ) : null}
     </div>
   );
 };

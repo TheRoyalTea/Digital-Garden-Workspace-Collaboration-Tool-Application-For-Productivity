@@ -4,13 +4,28 @@ import DraggableToolbarItem from "./DraggableToolbarItem";
 type Props = {
   canvasItems: any;
   setCanvasItems: (canvasItems: any) => void;
+  activeCanvas: any;
+  requestedModal: string | null;
+  setRequestedModal: (requestedModal: string | null) => void;
 };
 
-const Toolbar = ({ canvasItems, setCanvasItems }: Props) => {
+enum ItemType {
+  MARKDOWN = "MARKDOWN",
+  CODE = "CODE",
+  LINK = "LINK",
+}
+
+const Toolbar = ({
+  canvasItems,
+  setCanvasItems,
+  activeCanvas,
+  requestedModal,
+  setRequestedModal,
+}: Props) => {
   const toolbarItems = [
-    { name: "markdown" },
-    { name: "code snip" },
-    { name: "link" },
+    { type: ItemType.MARKDOWN, name: "markdown" },
+    { type: ItemType.CODE, name: "code snip" },
+    { type: ItemType.LINK, name: "link" },
   ];
   return (
     <div className="h-[calc(100vh-6rem)] w-48 bg-jet flex flex-col border-r-4 border-cream">
@@ -18,9 +33,16 @@ const Toolbar = ({ canvasItems, setCanvasItems }: Props) => {
         Add Items
       </div>
       {toolbarItems.map((item) => (
-        <DraggableToolbarItem name={item.name} canvasItems={canvasItems} setCanvasItems={setCanvasItems} />
+        <DraggableToolbarItem
+          type={item.type}
+          name={item.name}
+          canvasItems={canvasItems}
+          setCanvasItems={setCanvasItems}
+          activeCanvas={activeCanvas}
+          requestedModal={requestedModal}
+          setRequestedModal={setRequestedModal}
+        />
       ))}
-
     </div>
   );
 };
