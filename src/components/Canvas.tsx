@@ -43,12 +43,10 @@ const Canvas = ({
         isOver && "outline-dashed outline-4 outline-green outline-offset-[-4px]"
       )}
     >
-      {(canvasItems as any[]).map(
-        (item: any) => (
-          console.log(item),
-          (<Item data={item} setRequestedModal={setRequestedModal} />)
-        )
-      )}
+      {(canvasItems as any[]).map((item: any) => (
+        <Item data={item} setRequestedModal={setRequestedModal} />
+      ))}
+
       {requestedModal ? (
         <ItemModal
           requestedModal={requestedModal}
