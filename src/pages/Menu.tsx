@@ -54,6 +54,12 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
     }
   };
 
+  const handleNameChange = (idx: number, newName: string) => {
+    const newCanvasNames = [...canvasNames];
+    newCanvasNames[idx] = newName;
+    setCanvasNames(newCanvasNames);
+  };
+
   const updateCanvasName = async (id: string, name: string) => {
     const req = await API.graphql({
       query: updateCanvas,
@@ -105,15 +111,17 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
                 value={canvasNames[idx]}
                 onChange={(e) => {
                   // FIXME: expensive
-                  setCanvasNames((canvasNames: string[]) => {
-                    canvasNames[idx] = e.target.value;
-                    return canvasNames;
-                  });
+                  handleNameChange(idx, e.target.value);
                 }}
                 onBlur={() => {
                   updateCanvasName(canvas.id, canvasNames[idx]);
                 }}
-                className="text-xl outline-none border-none bg-[transparent]"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    (e.target as HTMLInputElement).blur();
+                  }
+                }}
+                className="text-xl outline-none border-none bg-[rgba(0,0,0,0)] text-center transition duration-200 hover:bg-[rgba(0,0,0,0.3)] hover:border hover:border-[rgba(255,255,255,0.2)] rounded-md"
               ></input>
               <p className="text-base">canvas ID: {canvas.id}</p>
               <p className="text-base">user ID: {canvas.userID}</p>
