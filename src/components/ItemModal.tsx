@@ -6,6 +6,7 @@ import {
   createItem as create,
   listItems,
   updateItem as update,
+  deleteItem,
 } from "../graphql";
 
 type Props = {
@@ -26,7 +27,7 @@ const ItemModal = ({
   const [content, setContent] = useState("");
   const [savedContent, setSavedContent] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("javascript");
-  
+
   const types = ["MARKDOWN", "CODE", "LINK"];
 
   const fetchItem = async () => {
@@ -80,11 +81,32 @@ const ItemModal = ({
       console.log(err);
     }
   };
+
+  const removeItem = async () => {
+    try {
+      await API.graphql({
+        query: deleteItem,
+        variables: {
+          input: {
+            id: requestedModal,
+          },
+        },
+      });
+      setCanvasItems(
+        canvasItems.filter((item: any) => item.id !== requestedModal)
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleConfirm = () => {
     setSavedContent(content);
     // FIXME: to differentiate between a new item and an existing item
     if (requestedModal && types.includes(requestedModal)) {
       createItem();
+    } else if (content === "") {
+      removeItem();
     } else {
       updateItem();
     }
