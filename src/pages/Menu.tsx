@@ -1,6 +1,7 @@
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import { API, graphqlOperation } from "aws-amplify";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Observable from "zen-observable-ts";
 import {
   createCanvas,
@@ -24,6 +25,8 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
   const [isSharedCanvas, setIsSharedCanvas] = useState(false);
   const [canvasList, setCanvasList] = useState<any>([]);
   const [canvasNames, setCanvasNames] = useState<string[]>([]);
+
+  const navigate = useNavigate();
 
   const fetchCanvases = async (
     newCanvas?: GraphQLResult<any> | Observable<any>
@@ -129,6 +132,7 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
                 className="button-blue h-12 w-40 bg-green"
                 onClick={() => {
                   setActiveCanvas(canvas);
+                  navigate("/canvas/" + canvas.id);
                 }}
               >
                 Open
