@@ -1,11 +1,18 @@
 import { Auth } from "aws-amplify";
+import { useNavigate } from "react-router-dom";
 
-export const Menubar = () => {
+// TODO: merge Menubar and Topbar into one component
+type Props = {
+  setUser: (user: any) => void;
+};
+
+export const Menubar = ({ setUser }: Props) => {
+  const navigate = useNavigate();
   async function signOut() {
     try {
       await Auth.signOut();
-      {/* change with react-router */}
-      window.location.reload();
+      navigate("/");
+      setUser(null);
     } catch (error) {
       console.log("error signing out: ", error);
     }

@@ -32,6 +32,7 @@ const App = () => {
             element={
               <Board
                 user={user}
+                setUser={setUser}
                 activeCanvas={activeCanvas}
                 setActiveCanvas={setActiveCanvas}
               />
@@ -39,7 +40,13 @@ const App = () => {
           />
           <Route
             path="/menu"
-            element={<Menu user={user} setActiveCanvas={setActiveCanvas} />}
+            element={
+              <Menu
+                user={user}
+                setUser={setUser}
+                setActiveCanvas={setActiveCanvas}
+              />
+            }
           />
         </Route>
       </Routes>

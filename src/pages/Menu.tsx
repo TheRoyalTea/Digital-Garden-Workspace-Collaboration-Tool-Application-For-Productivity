@@ -10,17 +10,18 @@ import {
   updateCanvas,
 } from "../graphql";
 import Board from "../pages/Board";
-import Topbar from "../components/Topbar";
+import Menubar from "../components/Menubar";
 import Canvas from "../components/Canvas";
 import CreateCanvas from "../components/CreateCanvas";
 import SharedCanvas from "../components/SharedCanvas";
 
 type Props = {
   user: any;
+  setUser: (user: any) => void;
   setActiveCanvas: (activeCanvas: any) => void;
 };
 
-const Menu = ({ user, setActiveCanvas }: Props) => {
+const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
   const [isNewCanvas, setIsNewCanvas] = useState(false);
   const [isSharedCanvas, setIsSharedCanvas] = useState(false);
   const [canvasList, setCanvasList] = useState<any>([]);
@@ -36,7 +37,7 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
       variables: {
         filter: {
           userID: {
-            eq: user.pool.clientID,
+            eq: user.attributes.sub,
           },
         },
       },
@@ -77,6 +78,7 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
     fetchCanvases();
   };
 
+  // FIXME: remove items from canvas when deleted
   const removeCanvas = async (id: string) => {
     try {
       await API.graphql({
@@ -100,7 +102,7 @@ const Menu = ({ user, setActiveCanvas }: Props) => {
   return (
     <>
       <div className="bg-dark-jet h-screen w-full">
-        <Topbar />
+        <Menubar setUser={setUser} />
         <div className="flex justify-center items-center text-cream pt-[2%] pb-[2%]">
           <div className="h-0.5 flex-1 bg-cream"></div>
           <h4>My Canvases</h4>

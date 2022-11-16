@@ -9,10 +9,11 @@ import { listItems } from "../graphql";
 
 type Props = {
   user: any;
+  setUser: (user: any) => void;
   activeCanvas: any;
   setActiveCanvas: (activeCanvas: any) => void;
 };
-const Board = ({ user, activeCanvas, setActiveCanvas }: Props) => {
+const Board = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
   const [canvasItems, setCanvasItems] = useState<any>([]);
   const [requestedModal, setRequestedModal] = useState<string | null>(null);
 
@@ -39,7 +40,7 @@ const Board = ({ user, activeCanvas, setActiveCanvas }: Props) => {
 
   return (
     <>
-      <Menubar />
+      <Menubar setUser={setUser} />
       <DndProvider backend={HTML5Backend}>
         <Toolbar
           canvasItems={canvasItems}

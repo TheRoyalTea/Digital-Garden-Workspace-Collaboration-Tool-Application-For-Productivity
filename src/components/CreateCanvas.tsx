@@ -24,7 +24,7 @@ const CreateCanvas = ({
       query: create,
       variables: {
         input: {
-          userID: user.pool.clientId,
+          userID: user.attributes.sub,
           name: name,
         },
       },
