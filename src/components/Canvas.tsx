@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDrop } from "react-dnd";
 import cx from "classnames";
 import Item from "./Item";
 import ItemModal from "./ItemModal";
-import { Responsive, WidthProvider } from "react-grid-layout";
+import { Responsive, WidthProvider, Layout, Layouts } from "react-grid-layout";
 const ResponsiveGridLayout = WidthProvider(Responsive);
 import "../assets/css/react-grid-layout.css";
 import "../assets/css/react-resizable.css";
@@ -25,6 +25,8 @@ const Canvas = ({
   setRequestedModal,
 }: Props) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [layout, setLayout] = useState<any[]>([]);
+
   const [{ isOver }, drop] = useDrop({
     accept: "toolbarItem",
     drop: (item: any) => {
@@ -53,6 +55,8 @@ const Canvas = ({
           console.log("current layout: ", layout);
           console.log("layouts", layouts);
         }}
+        // TODO: change resize handles dynamically based on item's position
+        resizeHandles={["se"]}
       >
         {(canvasItems as any[]).map((item: any, idx: number) => (
           <div
