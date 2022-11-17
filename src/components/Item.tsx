@@ -17,8 +17,8 @@ const Item = ({ data, setRequestedModal }: Props) => {
         "text-xl text-cream rounded-xl",
         "border border-cream border-opacity-25",
         "shadow-[8px_8px_rgba(0,0,0,0.4)] hover:shadow-[16px_16px_rgba(0,0,0,0.3)]",
-        "inline-block break-all whitespace-pre-line resize overflow-auto select-none",
-        "hover:border-2 hover:border-opacity-75 transition hover:duration-150",
+        "inline-block break-all whitespace-pre-line overflow-auto h-full w-full",
+        "hover:border-2 hover:border-opacity-75 transition hover:duration-150 hover:z-10",
         "hover:translate-x-[-4px] hover:translate-y-[-4px]",
         data.name === "code snip" ? "bg-gruv-dark" : "bg-jet"
       )}

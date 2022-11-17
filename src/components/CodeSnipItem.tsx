@@ -10,11 +10,13 @@ type Props = {
 };
 const CodeSnipItem = ({ savedContent, selectedLanguage }: Props) => {
   return (
-    <>
-      <SyntaxHighlighter language={selectedLanguage} style={gruvboxDark} PreTag="div">
-        {savedContent}
-      </SyntaxHighlighter>
-    </>
+    <SyntaxHighlighter
+      language={selectedLanguage}
+      style={gruvboxDark}
+      PreTag="div"
+    >
+      {savedContent}
+    </SyntaxHighlighter>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import Observable from "zen-observable-ts";
 import { API } from "aws-amplify";
@@ -32,6 +32,21 @@ const CreateCanvas = ({
     // TODO: fetch only new canvas instead of all canvases
     fetchCanvases();
   };
+
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter") {
+      newCanvas();
+      setIsOpened(false);
+    } else if (e.key === "Escape") {
+      setIsOpened(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <>
