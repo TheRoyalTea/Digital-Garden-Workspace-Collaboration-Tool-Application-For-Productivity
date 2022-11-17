@@ -49,6 +49,10 @@ const Canvas = ({
         cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
         rowHeight={50}
         margin={[15, 15]}
+        onLayoutChange={(layout, layouts) => {
+          console.log(layout);
+          console.log(layouts);
+        }}
       >
         {(canvasItems as any[]).map((item: any, idx: number) => (
           <div
