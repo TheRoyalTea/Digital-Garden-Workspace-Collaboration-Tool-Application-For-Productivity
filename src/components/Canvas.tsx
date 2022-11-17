@@ -50,8 +50,8 @@ const Canvas = ({
         rowHeight={50}
         margin={[15, 15]}
         onLayoutChange={(layout, layouts) => {
-          console.log(layout);
-          console.log(layouts);
+          console.log("current layout: ", layout);
+          console.log("layouts", layouts);
         }}
       >
         {(canvasItems as any[]).map((item: any, idx: number) => (
