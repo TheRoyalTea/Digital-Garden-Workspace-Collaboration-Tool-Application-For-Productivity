@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
-import { API } from "aws-amplify";
 import cx from "classnames";
 import Item from "./Item";
 import ItemModal from "./ItemModal";

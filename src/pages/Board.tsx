@@ -4,6 +4,8 @@ import Toolbar from "../components/Toolbar";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useEffect, useState } from "react";
+//FIXME: Cannot find module 'aws-amplify' or its corresponding type declarations.ts(2307)
+//@ts-ignore
 import { API } from "aws-amplify";
 import { listItems } from "../graphql";
 

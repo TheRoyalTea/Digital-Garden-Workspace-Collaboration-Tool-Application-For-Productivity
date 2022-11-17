@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import cx from "classnames";
 import { Prism } from "react-syntax-highlighter";
+//@ts-ignore
 import { API } from "aws-amplify";
 import {
   createItem as create,
