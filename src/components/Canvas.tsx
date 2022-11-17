@@ -41,7 +41,7 @@ const Canvas = ({
     <div
       ref={drop}
       className={cx(
-        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] p-10 overflow-y-auto",
+        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] p-7 overflow-y-auto overflow-x-hidden",
         "scrollbar-hide absolute top-24 left-48 bg-dark-jet",
         isOver && "outline-dashed outline-4 outline-green outline-offset-[-4px]"
       )}
