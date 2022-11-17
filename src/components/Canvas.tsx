@@ -4,6 +4,10 @@ import { API } from "aws-amplify";
 import cx from "classnames";
 import Item from "./Item";
 import ItemModal from "./ItemModal";
+import { Responsive, WidthProvider } from "react-grid-layout";
+const ResponsiveGridLayout = WidthProvider(Responsive);
+import "../assets/css/react-grid-layout.css";
+import "../assets/css/react-resizable.css";
 
 // fix types
 type Props = {
@@ -37,16 +41,30 @@ const Canvas = ({
     <div
       ref={drop}
       className={cx(
-        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] p-10 overflow-x-auto overflow-y-auto",
+        "h-[calc(100vh-6rem)] w-[calc(100vw-12rem)] p-10 overflow-y-auto",
         "scrollbar-hide absolute top-24 left-48 bg-dark-jet",
-        "flex flex-row flex-wrap justify-start gap-3 items-start basis-96 content-start",
         isOver && "outline-dashed outline-4 outline-green outline-offset-[-4px]"
       )}
     >
-      {(canvasItems as any[]).map((item: any) => (
-        <Item data={item} setRequestedModal={setRequestedModal} />
-      ))}
-
+      <ResponsiveGridLayout
+        cols={{ lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 }}
+        rowHeight={50}
+        margin={[15, 15]}
+      >
+        {(canvasItems as any[]).map((item: any, idx: number) => (
+          <div
+            key={"i" + idx}
+            data-grid={{
+              x: idx,
+              y: Math.floor(idx / 5) * Math.ceil(Math.random() * 4),
+              w: Math.ceil(Math.random() * 4),
+              h: Math.ceil(Math.random() * 4),
+            }}
+          >
+            <Item data={item} setRequestedModal={setRequestedModal} />
+          </div>
+        ))}
+      </ResponsiveGridLayout>
       {requestedModal ? (
         <ItemModal
           requestedModal={requestedModal}

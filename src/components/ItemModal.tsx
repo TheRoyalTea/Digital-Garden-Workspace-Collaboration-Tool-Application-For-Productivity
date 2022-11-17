@@ -139,7 +139,7 @@ const ItemModal = ({
   return (
     <div
       className={cx(
-        "h-[calc(100%-80px)] w-[calc(100%-80px)] absolute bg-jet bg-opacity-50 text-xl text-cream rounded-xl",
+        "h-[calc(100%-80px)] w-[calc(100%-80px)] absolute left-10 top-10 bg-jet bg-opacity-50 text-xl text-cream rounded-xl",
         "border border-cream border-opacity-25",
         "shadow-[24px_24px_rgba(0,0,0,0.3)]",
         "flex flex-col justify-center p-16",
