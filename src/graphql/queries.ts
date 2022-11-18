@@ -2,6 +2,47 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getRequest = /* GraphQL */ `
+  query GetRequest($id: ID!) {
+    getRequest(id: $id) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
+export const listRequests = /* GraphQL */ `
+  query ListRequests(
+    $filter: ModelRequestFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRequests(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        code
+        isEdit
+        expire
+        createdAt
+        updatedAt
+        requestCanvasId
+      }
+      nextToken
+    }
+  }
+`;
 export const getEditable = /* GraphQL */ `
   query GetEditable($id: ID!) {
     getEditable(id: $id) {
@@ -10,6 +51,7 @@ export const getEditable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -46,6 +88,7 @@ export const getViewable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -78,10 +121,6 @@ export const getItem = /* GraphQL */ `
   query GetItem($id: ID!) {
     getItem(id: $id) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -100,10 +139,6 @@ export const listItems = /* GraphQL */ `
     listItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        xloc
-        yloc
-        width
-        height
         type
         content
         file
@@ -124,6 +159,7 @@ export const getCanvas = /* GraphQL */ `
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
@@ -140,6 +176,7 @@ export const listCanvas = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }

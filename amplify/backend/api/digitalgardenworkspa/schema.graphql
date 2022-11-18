@@ -1,3 +1,11 @@
+type Request @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  code: Int
+  isEdit: Boolean
+  expire: AWSDateTime
+  canvas: Canvas @hasOne
+}
+
 type Editable @model @auth(rules: [{allow: public}]) {
   id: ID!
   canvas: Canvas @hasOne
@@ -18,10 +26,6 @@ enum ItemType {
 
 type Item @model @auth(rules: [{allow: public}]) {
   id: ID!
-  xloc: Float
-  yloc: Float
-  width: Float
-  height: Float
   type: ItemType
   content: String
   file: String
@@ -33,5 +37,6 @@ type Canvas @model @auth(rules: [{allow: public}]) {
   name: String
   items: [Item] @hasMany(indexName: "byCanvas", fields: ["id"])
   userID: String!
+  layouts: String
 }
  
