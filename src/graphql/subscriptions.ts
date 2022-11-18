@@ -2,14 +2,78 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateRequest = /* GraphQL */ `
+  subscription OnCreateRequest($filter: ModelSubscriptionRequestFilterInput) {
+    onCreateRequest(filter: $filter) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
+export const onUpdateRequest = /* GraphQL */ `
+  subscription OnUpdateRequest($filter: ModelSubscriptionRequestFilterInput) {
+    onUpdateRequest(filter: $filter) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
+export const onDeleteRequest = /* GraphQL */ `
+  subscription OnDeleteRequest($filter: ModelSubscriptionRequestFilterInput) {
+    onDeleteRequest(filter: $filter) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
 export const onCreateEditable = /* GraphQL */ `
-  subscription OnCreateEditable {
-    onCreateEditable {
+  subscription OnCreateEditable($filter: ModelSubscriptionEditableFilterInput) {
+    onCreateEditable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -21,13 +85,14 @@ export const onCreateEditable = /* GraphQL */ `
   }
 `;
 export const onUpdateEditable = /* GraphQL */ `
-  subscription OnUpdateEditable {
-    onUpdateEditable {
+  subscription OnUpdateEditable($filter: ModelSubscriptionEditableFilterInput) {
+    onUpdateEditable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -39,13 +104,14 @@ export const onUpdateEditable = /* GraphQL */ `
   }
 `;
 export const onDeleteEditable = /* GraphQL */ `
-  subscription OnDeleteEditable {
-    onDeleteEditable {
+  subscription OnDeleteEditable($filter: ModelSubscriptionEditableFilterInput) {
+    onDeleteEditable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -57,13 +123,14 @@ export const onDeleteEditable = /* GraphQL */ `
   }
 `;
 export const onCreateViewable = /* GraphQL */ `
-  subscription OnCreateViewable {
-    onCreateViewable {
+  subscription OnCreateViewable($filter: ModelSubscriptionViewableFilterInput) {
+    onCreateViewable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -75,13 +142,14 @@ export const onCreateViewable = /* GraphQL */ `
   }
 `;
 export const onUpdateViewable = /* GraphQL */ `
-  subscription OnUpdateViewable {
-    onUpdateViewable {
+  subscription OnUpdateViewable($filter: ModelSubscriptionViewableFilterInput) {
+    onUpdateViewable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -93,13 +161,14 @@ export const onUpdateViewable = /* GraphQL */ `
   }
 `;
 export const onDeleteViewable = /* GraphQL */ `
-  subscription OnDeleteViewable {
-    onDeleteViewable {
+  subscription OnDeleteViewable($filter: ModelSubscriptionViewableFilterInput) {
+    onDeleteViewable(filter: $filter) {
       id
       canvas {
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -111,13 +180,9 @@ export const onDeleteViewable = /* GraphQL */ `
   }
 `;
 export const onCreateItem = /* GraphQL */ `
-  subscription OnCreateItem {
-    onCreateItem {
+  subscription OnCreateItem($filter: ModelSubscriptionItemFilterInput) {
+    onCreateItem(filter: $filter) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -128,13 +193,9 @@ export const onCreateItem = /* GraphQL */ `
   }
 `;
 export const onUpdateItem = /* GraphQL */ `
-  subscription OnUpdateItem {
-    onUpdateItem {
+  subscription OnUpdateItem($filter: ModelSubscriptionItemFilterInput) {
+    onUpdateItem(filter: $filter) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -145,13 +206,9 @@ export const onUpdateItem = /* GraphQL */ `
   }
 `;
 export const onDeleteItem = /* GraphQL */ `
-  subscription OnDeleteItem {
-    onDeleteItem {
+  subscription OnDeleteItem($filter: ModelSubscriptionItemFilterInput) {
+    onDeleteItem(filter: $filter) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -162,42 +219,45 @@ export const onDeleteItem = /* GraphQL */ `
   }
 `;
 export const onCreateCanvas = /* GraphQL */ `
-  subscription OnCreateCanvas {
-    onCreateCanvas {
+  subscription OnCreateCanvas($filter: ModelSubscriptionCanvasFilterInput) {
+    onCreateCanvas(filter: $filter) {
       id
       name
       items {
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
   }
 `;
 export const onUpdateCanvas = /* GraphQL */ `
-  subscription OnUpdateCanvas {
-    onUpdateCanvas {
+  subscription OnUpdateCanvas($filter: ModelSubscriptionCanvasFilterInput) {
+    onUpdateCanvas(filter: $filter) {
       id
       name
       items {
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
   }
 `;
 export const onDeleteCanvas = /* GraphQL */ `
-  subscription OnDeleteCanvas {
-    onDeleteCanvas {
+  subscription OnDeleteCanvas($filter: ModelSubscriptionCanvasFilterInput) {
+    onDeleteCanvas(filter: $filter) {
       id
       name
       items {
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }

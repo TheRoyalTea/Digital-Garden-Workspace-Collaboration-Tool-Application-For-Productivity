@@ -2,6 +2,78 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createRequest = /* GraphQL */ `
+  mutation CreateRequest(
+    $input: CreateRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    createRequest(input: $input, condition: $condition) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
+export const updateRequest = /* GraphQL */ `
+  mutation UpdateRequest(
+    $input: UpdateRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    updateRequest(input: $input, condition: $condition) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
+export const deleteRequest = /* GraphQL */ `
+  mutation DeleteRequest(
+    $input: DeleteRequestInput!
+    $condition: ModelRequestConditionInput
+  ) {
+    deleteRequest(input: $input, condition: $condition) {
+      id
+      code
+      isEdit
+      expire
+      canvas {
+        id
+        name
+        userID
+        layouts
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      requestCanvasId
+    }
+  }
+`;
 export const createEditable = /* GraphQL */ `
   mutation CreateEditable(
     $input: CreateEditableInput!
@@ -13,6 +85,7 @@ export const createEditable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -34,6 +107,7 @@ export const updateEditable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -55,6 +129,7 @@ export const deleteEditable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -76,6 +151,7 @@ export const createViewable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -97,6 +173,7 @@ export const updateViewable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -118,6 +195,7 @@ export const deleteViewable = /* GraphQL */ `
         id
         name
         userID
+        layouts
         createdAt
         updatedAt
       }
@@ -135,10 +213,6 @@ export const createItem = /* GraphQL */ `
   ) {
     createItem(input: $input, condition: $condition) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -155,10 +229,6 @@ export const updateItem = /* GraphQL */ `
   ) {
     updateItem(input: $input, condition: $condition) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -175,10 +245,6 @@ export const deleteItem = /* GraphQL */ `
   ) {
     deleteItem(input: $input, condition: $condition) {
       id
-      xloc
-      yloc
-      width
-      height
       type
       content
       file
@@ -200,6 +266,7 @@ export const createCanvas = /* GraphQL */ `
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
@@ -217,6 +284,7 @@ export const updateCanvas = /* GraphQL */ `
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
@@ -234,6 +302,7 @@ export const deleteCanvas = /* GraphQL */ `
         nextToken
       }
       userID
+      layouts
       createdAt
       updatedAt
     }
