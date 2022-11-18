@@ -93,6 +93,7 @@ const Canvas = ({
 
   useEffect(() => {
     fetchSavedLayouts();
+    setFirstRender(false);
   }, []);
 
   return (
@@ -111,7 +112,6 @@ const Canvas = ({
         margin={[15, 15]}
         onLayoutChange={(_layout, _layouts) => {
           !firstRender && persistLayouts(_layouts);
-          setFirstRender(false);
           // FIXME?: see if there is a way to work around having to do this on every layout change
           console.log("client: ", _layouts);
           console.log("server: ", JSON.parse(activeCanvas.layouts));
