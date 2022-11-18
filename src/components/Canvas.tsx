@@ -69,6 +69,7 @@ const Canvas = ({
         id: activeCanvas.id,
       },
     });
+    // FIXME: .then() is not a function
     if (canvas.data.getCanvas.layouts) {
       setLayouts(JSON.parse(canvas.data.getCanvas.layouts));
     }

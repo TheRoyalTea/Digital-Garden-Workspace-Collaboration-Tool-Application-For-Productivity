@@ -44,6 +44,7 @@ const App = () => {
               <Menu
                 user={user}
                 setUser={setUser}
+                activeCanvas={activeCanvas}
                 setActiveCanvas={setActiveCanvas}
               />
             }

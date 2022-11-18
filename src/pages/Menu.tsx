@@ -1,5 +1,5 @@
 import { GraphQLResult } from "@aws-amplify/api-graphql";
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Observable from "zen-observable-ts";
@@ -9,19 +9,18 @@ import {
   deleteCanvas,
   updateCanvas,
 } from "../graphql";
-import Board from "../pages/Board";
 import Menubar from "../components/Menubar";
-import Canvas from "../components/Canvas";
 import CreateCanvas from "../components/CreateCanvas";
 import SharedCanvas from "../components/SharedCanvas";
 
 type Props = {
   user: any;
   setUser: (user: any) => void;
+  activeCanvas: any;
   setActiveCanvas: (activeCanvas: any) => void;
 };
 
-const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
+const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
   const [isNewCanvas, setIsNewCanvas] = useState(false);
   const [isSharedCanvas, setIsSharedCanvas] = useState(false);
   const [canvasList, setCanvasList] = useState<any>([]);
@@ -102,7 +101,7 @@ const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
   return (
     <>
       <div className="bg-dark-jet h-screen w-full">
-        <Menubar setUser={setUser} />
+        <Menubar setUser={setUser} activeCanvas={activeCanvas}/>
         <div className="flex justify-center items-center gap-3 text-cream pt-[2%] pb-[2%]">
           <div className="h-0.5 flex-1 bg-cream"></div>
           <h4>My Canvases</h4>

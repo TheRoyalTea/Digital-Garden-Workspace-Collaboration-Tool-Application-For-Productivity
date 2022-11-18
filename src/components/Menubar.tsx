@@ -1,12 +1,14 @@
 import { Auth } from "aws-amplify";
 import { useNavigate } from "react-router-dom";
+import ShareButton from "./ShareButton";
 
 // TODO: merge Menubar and Topbar into one component
 type Props = {
   setUser: (user: any) => void;
+  activeCanvas: any;
 };
 
-export const Menubar = ({ setUser }: Props) => {
+export const Menubar = ({ setUser, activeCanvas }: Props) => {
   const navigate = useNavigate();
   async function signOut() {
     try {
@@ -25,7 +27,7 @@ export const Menubar = ({ setUser }: Props) => {
         <div className="menu-option">{"{ option }"}</div>
         <div className="menu-option">{"{ option }"}</div>
         <div className="flex justify-center items-center ml-[58%]">
-          <button className="button-blue">Share</button>
+          <ShareButton activeCanvas={activeCanvas} />
           <button className="button-blue bg-red" onClick={signOut}>
             Sign Out
           </button>

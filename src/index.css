@@ -36,7 +36,7 @@ body {
     @apply h-12 text-center border bg-dark-jet rounded-xl w-80;
   }
   .pop-up-box {
-    @apply absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet 
+    @apply absolute inset-[50%] translate-x-[-50%] translate-y-[-50%] bg-jet z-10
     h-2/4 w-1/4 grid place-items-center text-cream border rounded-xl;
   }
   .pop-up-exit-bg {
