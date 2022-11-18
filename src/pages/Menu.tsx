@@ -103,7 +103,7 @@ const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
     <>
       <div className="bg-dark-jet h-screen w-full">
         <Menubar setUser={setUser} />
-        <div className="flex justify-center items-center text-cream pt-[2%] pb-[2%]">
+        <div className="flex justify-center items-center gap-3 text-cream pt-[2%] pb-[2%]">
           <div className="h-0.5 flex-1 bg-cream"></div>
           <h4>My Canvases</h4>
           <div className="h-0.5 flex-1 bg-cream"></div>
@@ -123,10 +123,10 @@ const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    (e.target as HTMLInputElement).blur();
+                    e.currentTarget.blur();
                   }
                 }}
-                className="text-xl outline-none border-none bg-[rgba(0,0,0,0)] text-center transition duration-200 hover:bg-[rgba(0,0,0,0.3)] hover:border hover:border-[rgba(255,255,255,0.2)] rounded-md"
+                className="text-xl outline-none border-none bg-[rgba(0,0,0,0)] text-center transition duration-200 focus:bg-[rgba(0,0,0,0.3)] focus:border focus:border-[rgba(255,255,255,0.2)] rounded-md"
               ></input>
               <p className="text-base">canvas ID: {canvas.id}</p>
               <p className="text-base">user ID: {canvas.userID}</p>
@@ -156,7 +156,7 @@ const Menu = ({ user, setUser, setActiveCanvas }: Props) => {
           </button>
         </div>
 
-        <div className="flex justify-center items-center text-cream pt-[2%] pb-[2%]">
+        <div className="flex justify-center items-center gap-3 text-cream pt-[2%] pb-[2%]">
           <div className="h-0.5 flex-1 bg-cream"></div>
           <h4>Shared Canvases</h4>
           <div className="h-0.5 flex-1 bg-cream"></div>
