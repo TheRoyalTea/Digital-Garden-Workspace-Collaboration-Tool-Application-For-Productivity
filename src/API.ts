@@ -4,53 +4,20 @@
 
 export type CreateRequestInput = {
   id?: string | null,
-  code?: number | null,
+  code?: string | null,
   isEdit?: boolean | null,
   expire?: string | null,
   requestCanvasId?: string | null,
 };
 
 export type ModelRequestConditionInput = {
-  code?: ModelIntInput | null,
+  code?: ModelStringInput | null,
   isEdit?: ModelBooleanInput | null,
   expire?: ModelStringInput | null,
   and?: Array< ModelRequestConditionInput | null > | null,
   or?: Array< ModelRequestConditionInput | null > | null,
   not?: ModelRequestConditionInput | null,
   requestCanvasId?: ModelIDInput | null,
-};
-
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export enum ModelAttributeTypes {
-  binary = "binary",
-  binarySet = "binarySet",
-  bool = "bool",
-  list = "list",
-  map = "map",
-  number = "number",
-  numberSet = "numberSet",
-  string = "string",
-  stringSet = "stringSet",
-  _null = "_null",
-}
-
-
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelStringInput = {
@@ -69,6 +36,20 @@ export type ModelStringInput = {
   size?: ModelSizeInput | null,
 };
 
+export enum ModelAttributeTypes {
+  binary = "binary",
+  binarySet = "binarySet",
+  bool = "bool",
+  list = "list",
+  map = "map",
+  number = "number",
+  numberSet = "numberSet",
+  string = "string",
+  stringSet = "stringSet",
+  _null = "_null",
+}
+
+
 export type ModelSizeInput = {
   ne?: number | null,
   eq?: number | null,
@@ -77,6 +58,13 @@ export type ModelSizeInput = {
   ge?: number | null,
   gt?: number | null,
   between?: Array< number | null > | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type ModelIDInput = {
@@ -98,7 +86,7 @@ export type ModelIDInput = {
 export type Request = {
   __typename: "Request",
   id: string,
-  code?: number | null,
+  code?: string | null,
   isEdit?: boolean | null,
   expire?: string | null,
   canvas?: Canvas | null,
@@ -144,7 +132,7 @@ export enum ItemType {
 
 export type UpdateRequestInput = {
   id: string,
-  code?: number | null,
+  code?: string | null,
   isEdit?: boolean | null,
   expire?: string | null,
   requestCanvasId?: string | null,
@@ -286,7 +274,7 @@ export type DeleteCanvasInput = {
 
 export type ModelRequestFilterInput = {
   id?: ModelIDInput | null,
-  code?: ModelIntInput | null,
+  code?: ModelStringInput | null,
   isEdit?: ModelBooleanInput | null,
   expire?: ModelStringInput | null,
   and?: Array< ModelRequestFilterInput | null > | null,
@@ -360,7 +348,7 @@ export type ModelCanvasConnection = {
 
 export type ModelSubscriptionRequestFilterInput = {
   id?: ModelSubscriptionIDInput | null,
-  code?: ModelSubscriptionIntInput | null,
+  code?: ModelSubscriptionStringInput | null,
   isEdit?: ModelSubscriptionBooleanInput | null,
   expire?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionRequestFilterInput | null > | null,
@@ -382,23 +370,6 @@ export type ModelSubscriptionIDInput = {
   notIn?: Array< string | null > | null,
 };
 
-export type ModelSubscriptionIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  in?: Array< number | null > | null,
-  notIn?: Array< number | null > | null,
-};
-
-export type ModelSubscriptionBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-};
-
 export type ModelSubscriptionStringInput = {
   ne?: string | null,
   eq?: string | null,
@@ -412,6 +383,11 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type ModelSubscriptionEditableFilterInput = {
@@ -456,7 +432,7 @@ export type CreateRequestMutation = {
   createRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -483,7 +459,7 @@ export type UpdateRequestMutation = {
   updateRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -510,7 +486,7 @@ export type DeleteRequestMutation = {
   deleteRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -803,7 +779,7 @@ export type GetRequestQuery = {
   getRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -833,7 +809,7 @@ export type ListRequestsQuery = {
     items:  Array< {
       __typename: "Request",
       id: string,
-      code?: number | null,
+      code?: string | null,
       isEdit?: boolean | null,
       expire?: string | null,
       createdAt: string,
@@ -1024,7 +1000,7 @@ export type OnCreateRequestSubscription = {
   onCreateRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -1050,7 +1026,7 @@ export type OnUpdateRequestSubscription = {
   onUpdateRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
@@ -1076,7 +1052,7 @@ export type OnDeleteRequestSubscription = {
   onDeleteRequest?:  {
     __typename: "Request",
     id: string,
-    code?: number | null,
+    code?: string | null,
     isEdit?: boolean | null,
     expire?: string | null,
     canvas?:  {
