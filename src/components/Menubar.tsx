@@ -27,7 +27,7 @@ export const Menubar = ({ setUser, activeCanvas }: Props) => {
         <div className="menu-option">{"{ option }"}</div>
         <div className="menu-option">{"{ option }"}</div>
         <div className="flex justify-center items-center ml-[58%]">
-          <ShareButton activeCanvas={activeCanvas} />
+          {activeCanvas && <ShareButton activeCanvas={activeCanvas} />}
           <button className="button-blue bg-red" onClick={signOut}>
             Sign Out
           </button>

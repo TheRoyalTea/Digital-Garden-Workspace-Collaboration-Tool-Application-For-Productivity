@@ -1,8 +1,11 @@
+import { useState } from "react";
+
 type Props = {
   setIsSharedCanvas: (isSharedCanvas: boolean) => void;
 };
 
 const SharedCanvas = ({ setIsSharedCanvas }: Props) => {
+  const [inviteCode, setInviteCode] = useState<string>();
   return (
     <>
       <button
@@ -15,7 +18,12 @@ const SharedCanvas = ({ setIsSharedCanvas }: Props) => {
           <p className="text-5xl text-cream">Join Canvas</p>
 
           <form>
-            <input className="form-field" placeholder="Invite Code"></input>
+            <input
+              className="form-field"
+              value={inviteCode}
+              placeholder="Invite Code"
+              onChange={(e) => setInviteCode(e.target.value)}
+            ></input>
           </form>
 
           <button

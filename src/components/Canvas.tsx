@@ -114,8 +114,6 @@ const Canvas = ({
         onLayoutChange={(_layout, _layouts) => {
           !firstRender && persistLayouts(_layouts);
           // FIXME?: see if there is a way to work around having to do this on every layout change
-          console.log("client: ", _layouts);
-          console.log("server: ", JSON.parse(activeCanvas.layouts));
         }}
         // TODO: change resize handles dynamically based on item's position
         resizeHandles={["se"]}
