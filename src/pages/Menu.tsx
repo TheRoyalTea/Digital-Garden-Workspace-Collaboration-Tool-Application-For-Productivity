@@ -10,6 +10,8 @@ import {
   updateCanvas,
   listViewables,
   listEditables,
+  deleteEditable,
+  deleteViewable,
 } from "../graphql";
 import Menubar from "../components/Menubar";
 import CreateCanvas from "../components/CreateCanvas";
@@ -184,7 +186,28 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
     }
   };
 
-  const leaveSharedCanvas = async (id: string) => {};
+  const leaveSharedCanvas = async (id: string, isEdit: boolean) => {
+    isEdit
+      ? await API.graphql({
+          query: deleteEditable,
+          variables: {
+            input: {
+              id,
+            },
+          },
+        })
+      : await API.graphql({
+          query: deleteViewable,
+          variables: {
+            input: {
+              id,
+            },
+          },
+        });
+    setSharedCanvasList(
+      sharedCanvasList.filter((sharedCanvas: any) => sharedCanvas.id !== id)
+    );
+  };
 
   useEffect(() => {
     fetchCanvases();
@@ -289,7 +312,10 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
               <button
                 className="button-blue h-12 w-40 bg-red"
                 onClick={() => {
-                  leaveSharedCanvas(canvas.id);
+                  leaveSharedCanvas(
+                    canvas.id,
+                    canvas.editableCanvasId ? true : false
+                  );
                 }}
               >
                 Leave
