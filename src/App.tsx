@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Board from "./pages/Board";
 import LandingPage from "./pages/LandingPage";
@@ -28,7 +28,18 @@ const App = () => {
         <Route path="/" element={<LandingPage onSignIn={onSignIn} />} />
         <Route element={<PrivateRoutes user={user} />}>
           <Route
-            path="/canvas/:id"
+            path="/canvas/:id/"
+            element={
+              <Board
+                user={user}
+                setUser={setUser}
+                activeCanvas={activeCanvas}
+                setActiveCanvas={setActiveCanvas}
+              />
+            }
+          />
+          <Route
+            path="/canvas/:id/:mode/:sharedId"
             element={
               <Board
                 user={user}

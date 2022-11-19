@@ -42,7 +42,7 @@ const Board = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
 
   return (
     <>
-      <Menubar setUser={setUser} activeCanvas={activeCanvas}/>
+      <Menubar user={user} setUser={setUser} activeCanvas={activeCanvas}/>
       <DndProvider backend={HTML5Backend}>
         <Toolbar
           canvasItems={canvasItems}
