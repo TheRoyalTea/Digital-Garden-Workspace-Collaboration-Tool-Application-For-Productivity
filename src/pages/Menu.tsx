@@ -8,6 +8,10 @@ import {
   listCanvas,
   deleteCanvas,
   updateCanvas,
+  listViewables,
+  listEditables,
+  deleteEditable,
+  deleteViewable,
 } from "../graphql";
 import Menubar from "../components/Menubar";
 import CreateCanvas from "../components/CreateCanvas";
@@ -24,7 +28,9 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
   const [isNewCanvas, setIsNewCanvas] = useState(false);
   const [isSharedCanvas, setIsSharedCanvas] = useState(false);
   const [canvasList, setCanvasList] = useState<any>([]);
+  const [sharedCanvasList, setSharedCanvasList] = useState<any>([]);
   const [canvasNames, setCanvasNames] = useState<string[]>([]);
+  const [sharedCanvasNames, setSharedCanvasNames] = useState<string[]>([]);
 
   const navigate = useNavigate();
 
@@ -55,6 +61,92 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
         canvases.data.listCanvas.items.map((canvas: any) => canvas.name)
       );
     }
+  };
+
+  const fetchSharedCanvases = async (
+    newCanvas?: GraphQLResult<any> | Observable<any>
+  ) => {
+    const viewables: GraphQLResult<any> = await API.graphql({
+      query: listViewables,
+      variables: {
+        filter: {
+          userID: {
+            eq: user.attributes.sub,
+          },
+        },
+      },
+    });
+    const editables: GraphQLResult<any> = await API.graphql({
+      query: listEditables,
+      variables: {
+        filter: {
+          userID: {
+            eq: user.attributes.sub,
+          },
+        },
+      },
+    });
+    const sharedCanvases = viewables.data.listViewables.items.concat(
+      editables.data.listEditables.items
+    );
+
+    if (newCanvas) {
+      setSharedCanvasList((sharedCanvasList: any) => [
+        ...sharedCanvasList,
+        sharedCanvases[0],
+      ]);
+    } else {
+      setSharedCanvasList(sharedCanvases);
+    }
+  };
+
+  const setActiveSharedCanvas = async (
+    sharedCanvasId: string,
+    canvasId: string,
+    mode: string
+  ) => {
+    const canvas: any = await API.graphql({
+      query: listCanvas,
+      variables: {
+        filter: {
+          id: {
+            eq: canvasId,
+          },
+        },
+      },
+    });
+    setActiveCanvas(canvas.data.listCanvas.items[0]);
+    navigate(
+      `/canvas/${canvas.data.listCanvas.items[0].id}/${mode}/${sharedCanvasId}`
+    );
+  };
+
+  const getCanvasNameFromId = async (canvasId: string) => {
+    const canvas: any = await API.graphql({
+      query: listCanvas,
+      variables: {
+        filter: {
+          id: {
+            eq: canvasId,
+          },
+        },
+      },
+    });
+
+    return canvas.data.listCanvas.items[0].name;
+  };
+
+  const fetchSharedCanvasNames = async () => {
+    sharedCanvasList.map((sharedCanvas: any) => {
+      getCanvasNameFromId(
+        sharedCanvas.editableCanvasId ?? sharedCanvas.viewableCanvasId
+      ).then((name: string) => {
+        setSharedCanvasNames((sharedCanvasNames: string[]) => [
+          ...sharedCanvasNames,
+          name,
+        ]);
+      });
+    });
   };
 
   const handleNameChange = (idx: number, newName: string) => {
@@ -94,14 +186,44 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
     }
   };
 
+  const leaveSharedCanvas = async (id: string, isEdit: boolean) => {
+    isEdit
+      ? await API.graphql({
+          query: deleteEditable,
+          variables: {
+            input: {
+              id,
+            },
+          },
+        })
+      : await API.graphql({
+          query: deleteViewable,
+          variables: {
+            input: {
+              id,
+            },
+          },
+        });
+    setSharedCanvasList(
+      sharedCanvasList.filter((sharedCanvas: any) => sharedCanvas.id !== id)
+    );
+  };
+
   useEffect(() => {
     fetchCanvases();
+    fetchSharedCanvases();
   }, []);
+
+  useEffect(() => {
+    console.log(sharedCanvasList);
+    console.log(sharedCanvasNames);
+    fetchSharedCanvasNames();
+  }, [sharedCanvasList]);
 
   return (
     <>
       <div className="bg-dark-jet h-screen w-full">
-        <Menubar setUser={setUser} activeCanvas={activeCanvas}/>
+        <Menubar user={user} setUser={setUser} activeCanvas={activeCanvas} />
         <div className="flex justify-center items-center gap-3 text-cream pt-[2%] pb-[2%]">
           <div className="h-0.5 flex-1 bg-cream"></div>
           <h4>My Canvases</h4>
@@ -162,6 +284,44 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
         </div>
 
         <div className="flex justify-center h-[25%]">
+          {sharedCanvasList.map((canvas: any, idx: number) => (
+            <div className="flex flex-col h-[80%] w-96 text-cream justify-center items-center add-box border-solid hover:scale-110 transition-all">
+              <input
+                value={sharedCanvasNames[idx]}
+                readOnly
+                className="text-xl outline-none border-none bg-[rgba(0,0,0,0)] text-center transition duration-200 focus:bg-[rgba(0,0,0,0.3)] focus:border focus:border-[rgba(255,255,255,0.2)] rounded-md"
+              ></input>
+              <p className="text-base">
+                canvas ID: {canvas.editableCanvasId ?? canvas.viewableCanvasId}
+              </p>
+              <p className="text-base">
+                canvas type: {canvas.editableCanvasId ? "Editable" : "Viewable"}
+              </p>
+              <button
+                className="button-blue h-12 w-40 bg-green"
+                onClick={() => {
+                  setActiveSharedCanvas(
+                    canvas.id,
+                    canvas.editableCanvasId ?? canvas.viewableCanvasId,
+                    canvas.editableCanvasId ? "edit" : "view"
+                  );
+                }}
+              >
+                Open
+              </button>
+              <button
+                className="button-blue h-12 w-40 bg-red"
+                onClick={() => {
+                  leaveSharedCanvas(
+                    canvas.id,
+                    canvas.editableCanvasId ? true : false
+                  );
+                }}
+              >
+                Leave
+              </button>
+            </div>
+          ))}
           <button className="add-box" onClick={() => setIsSharedCanvas(true)}>
             <div className="flex h-[100%] w-[100%] text-cream justify-center items-center">
               <p className="text-9xl">+</p>
@@ -179,7 +339,13 @@ const Menu = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
         />
       )}
 
-      {isSharedCanvas && <SharedCanvas setIsSharedCanvas={setIsSharedCanvas} />}
+      {isSharedCanvas && (
+        <SharedCanvas
+          setIsSharedCanvas={setIsSharedCanvas}
+          user={user}
+          fetchSharedCanvases={fetchSharedCanvases}
+        />
+      )}
     </>
   );
 };

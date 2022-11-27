@@ -4,11 +4,12 @@ import ShareButton from "./ShareButton";
 
 // TODO: merge Menubar and Topbar into one component
 type Props = {
+  user: any;
   setUser: (user: any) => void;
   activeCanvas: any;
 };
 
-export const Menubar = ({ setUser, activeCanvas }: Props) => {
+export const Menubar = ({ user, setUser, activeCanvas }: Props) => {
   const navigate = useNavigate();
   async function signOut() {
     try {
