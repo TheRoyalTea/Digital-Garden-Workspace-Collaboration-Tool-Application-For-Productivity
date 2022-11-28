@@ -17,6 +17,7 @@ type Props = {
   activeCanvas: any;
   requestedModal: string | null;
   setRequestedModal: (requestedModal: string | null) => void;
+  demo?: boolean;
 };
 
 const Canvas = ({
@@ -25,6 +26,7 @@ const Canvas = ({
   activeCanvas,
   requestedModal,
   setRequestedModal,
+  demo,
 }: Props) => {
   const [firstRender, setFirstRender] = useState(true);
   const [layouts, setLayouts] = useState<Layouts>();
@@ -93,7 +95,7 @@ const Canvas = ({
   };
 
   useEffect(() => {
-    fetchSavedLayouts();
+    !demo && fetchSavedLayouts();
     setFirstRender(false);
   }, []);
 
@@ -112,7 +114,7 @@ const Canvas = ({
         rowHeight={50}
         margin={[15, 15]}
         onLayoutChange={(_layout, _layouts) => {
-          !firstRender && persistLayouts(_layouts);
+          !firstRender && !demo && persistLayouts(_layouts);
           // FIXME?: see if there is a way to work around having to do this on every layout change
         }}
         // TODO: change resize handles dynamically based on item's position
@@ -131,6 +133,7 @@ const Canvas = ({
           canvasItems={canvasItems}
           setCanvasItems={setCanvasItems}
           setRequestedModal={setRequestedModal}
+          demo={demo}
         />
       ) : null}
     </div>

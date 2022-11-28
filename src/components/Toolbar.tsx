@@ -4,7 +4,7 @@ import DraggableToolbarItem from "./DraggableToolbarItem";
 type Props = {
   canvasItems: any;
   setCanvasItems: (canvasItems: any) => void;
-  activeCanvas: any;
+  activeCanvas?: any;
   requestedModal: string | null;
   setRequestedModal: (requestedModal: string | null) => void;
 };

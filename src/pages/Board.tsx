@@ -10,12 +10,19 @@ import { API } from "aws-amplify";
 import { listItems } from "../graphql";
 
 type Props = {
-  user: any;
-  setUser: (user: any) => void;
-  activeCanvas: any;
-  setActiveCanvas: (activeCanvas: any) => void;
+  demo?: boolean;
+  user?: any;
+  setUser?: (user: any) => void;
+  activeCanvas?: any;
+  setActiveCanvas?: (activeCanvas: any) => void;
 };
-const Board = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
+const Board = ({
+  demo,
+  user,
+  setUser,
+  activeCanvas,
+  setActiveCanvas,
+}: Props) => {
   const [canvasItems, setCanvasItems] = useState<any>([]);
   const [requestedModal, setRequestedModal] = useState<string | null>(null);
 
@@ -34,15 +41,24 @@ const Board = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
   };
 
   useEffect(() => {
-    fetchCanvasItems();
+    !demo && fetchCanvasItems();
     return () => {
-      setActiveCanvas(null);
+      setActiveCanvas?.(null);
     };
   }, []);
 
+  useEffect(() => {
+    console.log("canvasItems", canvasItems);
+  }, [canvasItems]);
+
   return (
     <>
-      <Menubar user={user} setUser={setUser} activeCanvas={activeCanvas} />
+      <Menubar
+        user={user}
+        setUser={setUser}
+        activeCanvas={activeCanvas}
+        demo={demo}
+      />
       <DndProvider backend={HTML5Backend}>
         <Toolbar
           canvasItems={canvasItems}
@@ -57,6 +73,7 @@ const Board = ({ user, setUser, activeCanvas, setActiveCanvas }: Props) => {
           activeCanvas={activeCanvas}
           requestedModal={requestedModal}
           setRequestedModal={setRequestedModal}
+          demo={demo}
         />
       </DndProvider>
     </>

@@ -13,6 +13,10 @@ const App = () => {
 
   const navigate = useNavigate();
 
+  const onDemo = () => {
+    navigate("/demo");
+  };
+  
   const onSignIn = () => {
     Auth.currentAuthenticatedUser()
       .then((user) => {
@@ -25,7 +29,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage onSignIn={onSignIn} />} />
+        <Route path="/" element={<LandingPage onSignIn={onSignIn} demo={onDemo}/>} />
+        <Route path="/demo" element={<Board demo />} />
         <Route element={<PrivateRoutes user={user} />}>
           <Route
             path="/canvas/:id/"

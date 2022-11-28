@@ -12,10 +12,11 @@ import {
 
 type Props = {
   requestedModal: string | null;
-  activeCanvas: any;
+  activeCanvas?: any;
   canvasItems: any;
   setCanvasItems: (canvasItems: any) => void;
   setRequestedModal: (requestedModal: string | null) => void;
+  demo?: boolean;
 };
 
 const ItemModal = ({
@@ -24,6 +25,7 @@ const ItemModal = ({
   setCanvasItems,
   canvasItems,
   setRequestedModal,
+  demo,
 }: Props) => {
   const [content, setContent] = useState("");
   const [savedContent, setSavedContent] = useState("");
@@ -105,11 +107,37 @@ const ItemModal = ({
     setSavedContent(content);
     // FIXME: to differentiate between a new item and an existing item
     if (requestedModal && types.includes(requestedModal)) {
-      createItem();
+      demo
+        ? setCanvasItems([
+            ...canvasItems,
+            {
+              id: Math.random().toString(36).substring(2, 8),
+              content: content,
+              type: requestedModal,
+            },
+          ])
+        : createItem();
     } else if (content === "") {
-      removeItem();
+      demo
+        ? setCanvasItems(
+            canvasItems.filter((item: any) => item.id !== requestedModal)
+          )
+        : removeItem();
     } else {
-      updateItem();
+      if (demo) {
+        const updatedCanvasItems = canvasItems.map((canvasItem: any) => {
+          if (canvasItem.id === requestedModal) {
+            return {
+              ...canvasItem,
+              content: content,
+            };
+          }
+          return canvasItem;
+        });
+        setCanvasItems(updatedCanvasItems);
+      } else {
+        updateItem();
+      }
     }
     setRequestedModal(null);
   };
@@ -133,7 +161,15 @@ const ItemModal = ({
 
   useEffect(() => {
     if (requestedModal && !types.includes(requestedModal)) {
-      fetchItem();
+      if (demo) {
+        const item = canvasItems.find(
+          (item: any) => item.id === requestedModal
+        );
+        setSavedContent(item.content);
+        setContent(item.content);
+      } else {
+        fetchItem();
+      }
     }
   }, []);
 

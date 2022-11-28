@@ -10,9 +10,10 @@ import Login from "../components/Login";
 
 type Props = {
   onSignIn: () => void;
+  demo: () => void;
 };
 
-const LandingPage = ({ onSignIn }: Props) => {
+const LandingPage = ({ onSignIn, demo }: Props) => {
   const [loginRequest, setLoginRequest] = useState(false);
   const [registerRequest, setRegisterRequest] = useState(false);
 
@@ -68,19 +69,28 @@ const LandingPage = ({ onSignIn }: Props) => {
         <hr className="absolute bottom-0 right-[45%] h-[65%] w-0 border-cream border-l border-dashed xs:hidden"></hr>
         <hr className="absolute bottom-[70%] h-0 right-0 w-[40%] border-cream border-t border-dashed xs:hidden"></hr>
         <div className="absolute bottom-0 w-[40%] left-[59%] xs:top-[30%] xs:left-0 xs:w-[100%]">
-          <div className="relative flex-col mb-5 xs-min:break-words text-cream text-2xl font-light leading-6 xs:leading-8">
-            <p>
-              <span className="text-red">shape</span>&nbsp;your&nbsp;
-              <span className="text-pink underline">ideas</span>
-            </p>
-            <p>
-              <span className="text-green xs:ml-10">refine</span>&nbsp;them
-            </p>
-            <p>
-              <span className="xs:whitespace-nowrap xs:ml-20">
-                <span className="text-blue">collaborate</span>&nbsp;with others
-              </span>
-            </p>
+          <div className="flex justify-between items-start">
+            <div className="relative flex-col mb-5 xs-min:break-words text-cream text-2xl font-light leading-6 xs:leading-8">
+              <p>
+                <span className="text-red">shape</span>&nbsp;your&nbsp;
+                <span className="text-pink underline">ideas</span>
+              </p>
+              <p>
+                <span className="text-green xs:ml-10">refine</span>&nbsp;them
+              </p>
+              <p>
+                <span className="xs:whitespace-nowrap xs:ml-20">
+                  <span className="text-blue">collaborate</span>&nbsp;with
+                  others
+                </span>
+              </p>
+            </div>
+            <button
+              onClick={demo}
+              className="button-blue bg-[#865b72] h-16 w-32 mr-12 text-2xl font-semibold"
+            >
+              Try it Out
+            </button>
           </div>
           <img
             src={Preview}
