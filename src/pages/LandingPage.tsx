@@ -87,9 +87,9 @@ const LandingPage = ({ onSignIn, demo }: Props) => {
             </div>
             <button
               onClick={demo}
-              className="button-blue mt-4 bg-[#865b72] h-16 w-32 lg:w-24 lg:h-12 mr-12 md:w-8 md:h-16 sm:text-base md:text-lg lg:text-xl text-2xl font-semibold"
+              className="button-blue mt-4 bg-[#865b72] h-16 w-32 lg:w-24 lg:h-12 mr-12 md:w-20 md:h-10 sm:text-base md:text-lg lg:text-xl text-2xl font-semibold"
             >
-              Try it Out
+              Try it out
             </button>
           </div>
           <img
