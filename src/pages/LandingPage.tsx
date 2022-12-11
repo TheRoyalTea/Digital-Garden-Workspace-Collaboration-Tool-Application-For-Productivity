@@ -21,7 +21,7 @@ const LandingPage = ({ onSignIn, demo }: Props) => {
     <>
       <div className="bg-dark-jet h-screen w-full">
         <div className="bg-black bg-opacity-40 flex flex-col items-center h-screen w-4/12 xs:h-[180px] xs:w-screen xs:items-start xs-min:after:content-'' xs-min:after:bg-black xs-min:after:h-[94%] xs-min:after:w-[6%] xs-min:after:bottom-0 xs-min:after:left-[33.33%] xs-min:after:absolute xs-min:after:opacity-20">
-          <h1 className="text-cream font-bold text-4xl sm:text-base md:text-2xl lg:text-3xl tracking-[0.13em] leading-normal mt-32 xs:mt-8 xs:ml-8">
+          <h1 className="text-cream font-bold text-4xl sm:text-base md:text-2xl lg:text-3xl tracking-[0.13em] leading-normal mt-36 xs:mt-8 xs:ml-8">
             <span className="text-blue">d</span>igital&nbsp;
             <span className="text-green">g</span>arden<br></br>
             <span className="text-pink">w</span>orkspace<br></br>
@@ -66,9 +66,9 @@ const LandingPage = ({ onSignIn, demo }: Props) => {
           className="absolute top-[3%] left-[2%] w-[10%] opacity-75 brightness-90 xs:top-[73%] xs:left-[22%] xs:w-[50%]"
           alt="color blocks"
         ></img>
-        <hr className="absolute bottom-0 right-[45%] h-[65%] w-0 border-cream border-l border-dashed xs:hidden"></hr>
-        <hr className="absolute bottom-[70%] h-0 right-0 w-[40%] border-cream border-t border-dashed xs:hidden"></hr>
-        <div className="absolute bottom-0 w-[40%] left-[59%] xs:top-[30%] xs:left-0 xs:w-[100%]">
+        <div className="absolute bottom-0 w-[45%] right-0 xs:top-[30%] xs:left-0 xs:w-[100%] pr-4">
+          <hr className="absolute bottom-[5%] -left-[10%] h-[90%] w-0 border-cream border-l border-dashed xs:hidden"></hr>
+          <hr className="absolute -top-[8%] h-0 right-0 w-[95%] border-cream border-t border-dashed xs:hidden"></hr>
           <div className="flex justify-between items-start">
             <div className="relative flex-col mb-5 xs-min:break-words text-cream text-2xl font-light leading-6 xs:leading-8">
               <p>
