@@ -70,7 +70,7 @@ const LandingPage = ({ onSignIn, demo }: Props) => {
           <hr className="absolute bottom-[5%] -left-[10%] h-[90%] w-0 border-cream border-l border-dashed xs:hidden"></hr>
           <hr className="absolute -top-[8%] h-0 right-0 w-[95%] border-cream border-t border-dashed xs:hidden"></hr>
           <div className="flex justify-between items-start">
-            <div className="relative flex-col mb-5 xs-min:break-words text-cream text-2xl font-light leading-6 xs:leading-8">
+            <div className="flex-col mb-5 xs-min:break-words text-cream text-2xl font-light sm:text-base md:text-lg lg:text-xl leading-tight xs:leading-8">
               <p>
                 <span className="text-red">shape</span>&nbsp;your&nbsp;
                 <span className="text-pink underline">ideas</span>
@@ -87,7 +87,7 @@ const LandingPage = ({ onSignIn, demo }: Props) => {
             </div>
             <button
               onClick={demo}
-              className="button-blue bg-[#865b72] h-16 w-32 mr-12 text-2xl font-semibold"
+              className="button-blue mt-4 bg-[#865b72] h-16 w-32 lg:w-24 lg:h-12 mr-12 md:w-8 md:h-16 sm:text-base md:text-lg lg:text-xl text-2xl font-semibold"
             >
               Try it Out
             </button>
