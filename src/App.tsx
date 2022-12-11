@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Board from "./pages/Board";
-import LandingPage from "./pages/LandingPage";
-import Menu from "./pages/Menu";
 import PrivateRoutes from "./components/PrivateRoutes";
 import "@aws-amplify/ui-react/styles.css";
 import { Auth } from "aws-amplify";
+
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const Menu = lazy(() => import("./pages/Menu"));
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ const App = () => {
   const onDemo = () => {
     navigate("/demo");
   };
-  
+
   const onSignIn = () => {
     Auth.currentAuthenticatedUser()
       .then((user) => {
@@ -29,7 +30,10 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LandingPage onSignIn={onSignIn} demo={onDemo}/>} />
+        <Route
+          path="/"
+          element={<LandingPage onSignIn={onSignIn} demo={onDemo} />}
+        />
         <Route path="/demo" element={<Board demo />} />
         <Route element={<PrivateRoutes user={user} />}>
           <Route
