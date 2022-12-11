@@ -12,6 +12,14 @@ Knowledge base. Project templating. You choose!
 
 ---
 
+[Kostiantyn Shyrolapov](https://github.com/deko95) - Frontend Engineer
+
+[Gaji Mahamud](https://github.com/Gaji-Mahamud) - Frontend Engineer
+
+[Nikhil Pandey](https://github.com/Tqkoyaki) - Backend Engineer / DevOps
+
+Mentored by [Boris Kozak](https://github.com/boriskozak)
+
 ### Tech stack:
   - #### Frontend: 
     <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a>
