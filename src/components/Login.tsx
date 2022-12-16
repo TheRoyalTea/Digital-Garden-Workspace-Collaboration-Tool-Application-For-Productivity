@@ -1,5 +1,6 @@
 import { Auth } from "aws-amplify";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 type Props = {
   setLoginRequest: (loginRequest: boolean) => void;
@@ -7,11 +8,7 @@ type Props = {
   onSignIn: () => void;
 };
 
-const Login = ({
-  setLoginRequest,
-  setRegisterRequest,
-  onSignIn,
-}: Props) => {
+const Login = ({ setLoginRequest, setRegisterRequest, onSignIn }: Props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,6 +19,7 @@ const Login = ({
       setLoginRequest(false);
     } catch (error) {
       console.log("error signing in", error);
+      toast.error("Invalid username or password");
     }
   };
 
@@ -51,10 +49,7 @@ const Login = ({
               onChange={(e) => setPassword(e.target.value)}
             ></input>
           </form>
-          <button
-            className="button-blue h-12 w-40"
-            onClick={signIn}
-          >
+          <button className="button-blue h-12 w-40" onClick={signIn}>
             Login
           </button>
           <p>
@@ -71,6 +66,7 @@ const Login = ({
           </p>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };
