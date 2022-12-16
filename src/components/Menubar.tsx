@@ -23,12 +23,10 @@ export const Menubar = ({ user, setUser, activeCanvas, demo }: Props) => {
   }
   return (
     <div className="h-24 w-screen bg-jet border-b-4 border-cream">
-      <div className="flex [&>*]:border-b-4 [&>*]:border-cream">
+      <div className="flex justify-between [&>*]:border-b-4 gap-5 [&>*]:border-cream">
         <div className="menu-option">Add Items</div>
-        <div className="menu-option">{"{ option }"}</div>
-        <div className="menu-option">{"{ option }"}</div>
-        <div className="menu-option">{"{ option }"}</div>
-        <div className="flex justify-center items-center ml-[58%]">
+
+        <div className="flex justify-center items-center ml-auto">
           {!demo && (
             <>
               {activeCanvas && <ShareButton activeCanvas={activeCanvas} />}
@@ -38,8 +36,8 @@ export const Menubar = ({ user, setUser, activeCanvas, demo }: Props) => {
             </>
           )}
         </div>
-        <div className="h-24 w-24 ml-auto bg-green border-b-4 border-cream flex justify-center items-center text-cream">
-          {"{ avatar }"}
+        <div className="h-24 w-24 bg-green border-b-4 border-cream flex justify-center items-center text-cream">
+          {user?.username}
         </div>
       </div>
     </div>
