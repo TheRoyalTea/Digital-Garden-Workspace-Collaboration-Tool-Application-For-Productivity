@@ -185,7 +185,7 @@ const ItemModal = ({
       )}
     >
       <textarea
-        className="text-xl border text-cream bg-jet h-48 rounded-xl"
+        className="text-xl border text-cream bg-jet h-48 rounded-xl p-4"
         placeholder="Enter text"
         value={content}
         onChange={(e) => setContent(e.target.value)}
